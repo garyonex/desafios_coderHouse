@@ -1,0 +1,1 @@
+[{"title":"Tomate","price":80.2,"thumbnail":"toamte.jpg","id":1},{"title":"Cebolla","price":141.23,"thumbnail":"cebolla.jpg","id":2},{"title":"Papa","price":11.23,"thumbnail":"papa.jpg","id":3},{"title":"Remolacha","price":16.23,"thumbnail":"remolacha.jpg","id":4}]
