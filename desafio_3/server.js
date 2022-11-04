@@ -1,11 +1,25 @@
 import express from 'express'
-import Contenedor from '../desafio_2/Contenedor'
-
+import productRoutes from './routes/productos.routes.js'
+import multer from 'multer'
 const app = express()
 app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
-let productos = null
+app.use(express.urlencoded({ extended: false }))
+app.use(express.static('public'))
 
+const { pathname: root } = new URL('../public', import.meta.url)
+// ** multer
+const storage = multer.diskStorage({
+  destination: './public/files',
+  filename: (req, file, cb) => {
+    cb(null, file.originalname)
+  },
+})
+app.use(
+  multer({
+    storage,
+    dest: './public/files',
+  }).single('myFile')
+)
 //**---- INICIO DE SERVIDOR */
 const PORT = 8080
 const server = app.listen(PORT, () =>
@@ -13,34 +27,10 @@ const server = app.listen(PORT, () =>
 )
 server.on('error', (err) => console.log(err))
 
-const productosTotal = () => {
-  const container = new Contenedor()
-  const file = './products.txt'
-  const allProductArray = container.read(file)
-  return allProductArray
-}
-
-const productRandom = () => {
-  const container = new Contenedor()
-  const file = './products.txt'
-  const allProductArray = container.read(file)
-  const randomIndex = Math.floor(Math.random() * allProductArray.length)
-  return allProductArray[randomIndex]
-}
-
-const init = () => {
-  console.log('iniciando ...')
-  productos = productosTotal()
-  console.log('Productos Cargados:', productos)
-}
-
 // routes
+app.get('/', (req, res) => {
+  res.render('index')
 
-app.use('/products', (req, res) => {
-  res.send(productos)
-  console.log(productos)
-}) +
-  app.get('/productsRandom', (req, res) => {
-    req.send(productRandom())
-  })
-init()
+})
+
+app.use('/productos', productRoutes)
