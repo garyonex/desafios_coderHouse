@@ -1,7 +1,9 @@
 import fs from 'fs'
 
 class Contenedor {
-  constructor() {}
+  constructor() {
+    
+  }
 
   async leerArchivo(file_path) {
     try {

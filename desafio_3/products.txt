@@ -1,1 +1,1 @@
-[{"titulo":"papa","precio":"5555","id":1},{"titulo":"aguacate","precio":"12345","id":2}]
+[{"titulo":"papa","precio":"5555","id":1},{"titulo":"aguacate","precio":"12345","id":2},{"titulo":"cebolla","precio":"12212","id":3}]

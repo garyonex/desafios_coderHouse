@@ -1,17 +1,18 @@
 import express from 'express'
-import productRoutes from './routes/productos.routes.js'
 import multer from 'multer'
-import ejs from 'ejs'
+import Contenedor from './src/Contenedor.js'
+import productRoutes from './src/routes/productos.routes.js'
+
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static('public'))
-app.set('views')
+app.set('views', './src/views')
 app.set('view engine', 'ejs')
-const { pathname: root } = new URL('../view', import.meta.url)
+const { pathname: root } = new URL('../src/views', import.meta.url)
 // ** multer
 const storage = multer.diskStorage({
-  destination: './public/files',
+  destination: './src/public/files',
   filename: (req, file, cb) => {
     cb(null, file.originalname)
   },
@@ -19,9 +20,10 @@ const storage = multer.diskStorage({
 app.use(
   multer({
     storage,
-    dest: './public/files',
-  }).single('myFile')
+    dest: './src/public/files',
+  }).single('imagen')
 )
+
 //**---- INICIO DE SERVIDOR */
 const PORT = 8080
 const server = app.listen(PORT, () =>
@@ -29,12 +31,7 @@ const server = app.listen(PORT, () =>
 )
 server.on('error', (err) => console.log(err))
 
-// routes
 app.get('/', (req, res) => {
-  res.render('index.ejs', {
-    productos: file
-  })
-
+  res.render('productos.ejs')
 })
-
-app.use('/productos', productRoutes)
+app.use('/api/productos', productRoutes)

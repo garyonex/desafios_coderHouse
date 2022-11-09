@@ -27,8 +27,9 @@ export const leer = (file) => {
   return result
 }
 
-export const eliminarUno = (id) => {
-  const result = container.deleteById(id)
+export const eliminarUno = (id,file) => {
+  
+  const result = container.deleteById(id, file)
   return result
 }
 

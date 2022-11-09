@@ -24,13 +24,13 @@ productRoutes.post('/', (req, res) => {
   console.log(body)
   res.json(leer(file))
 })
-productRoutes.delete('/:id', (req, res) => {
-  const id = req.params.id
-  eliminarUno(id)
+productRoutes.delete('/eliminar/:id', (req, res) => {
+  const { id } = req.params
+  eliminarUno(id, file)
   const result = leer(file)
-  res.status(204).json({ message: result })
+  res.json({ message: 'eliminado' })
 })
-productRoutes.get('/:id',(req, res) => {
+productRoutes.get('/:id', (req, res) => {
   const { id } = req.params
   const result = buscarUno(id, file)
   res.json(result)
