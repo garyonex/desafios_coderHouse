@@ -35,3 +35,18 @@ app.get('/', (req, res) => {
   res.render('productos.ejs')
 })
 app.use('/api/productos', productRoutes)
+
+
+
+//** Inicio de sockets */
+
+const mensaje = []
+
+io.on('connnection', (socket) => {
+  console.log(`Nueva conexion cliente ${socket.id}`);
+  socket.on('client:chat', (data) => {
+    const chat = { ...data }
+    mensajes.push(chat)
+    io.sockets.emit('server:chat', chat)
+  })
+})
