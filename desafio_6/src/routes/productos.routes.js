@@ -10,7 +10,7 @@ const productRoutes = Router()
 productRoutes.get('/', (req, res) => {
   const productos = productosTotal()
   console.log(productos)
-  res.render('index.ejs', { productos })
+  res.render('productCard', { productos })
 })
 productRoutes.post('/', (req, res) => {
   const { body } = req
