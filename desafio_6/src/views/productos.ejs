@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../views/partials/head.ejs') %>
+  </head>
+  <body class="container">
+    <header><%- include('../views/partials/header') %></header>
+
+    <main>
+      <div class="jumbotron">
+    </main>
+    <h1 class="titulos">AGREGAR PRODUCTOS</h1>
+    <section>
+      <form action="/api/productos" method="post" enctype="multipart/form-data">
+        Titulo : <input type="text" name="titulo" /> precio :
+        <input type="number" name="precio" /> imagen :
+        <input type="url" name="imagen"  />
+        <button type="submit">AGREGAR</button>
+    </section>
+    <div class=" mt-4 text-center">
+      <p>
+        Si quieres agregar una imagen, da click <a target="_blank" href="https://www.iconfinder.com/search/icons?q=vegetable">AQUI</a>
+        y copia la direcciones de imagen y pegala
+      </p>
+      
+    </div>
+    <footer class="position-relative"><%- include('../views/partials/footer'); %></footer>
+  </body>
+</html>
