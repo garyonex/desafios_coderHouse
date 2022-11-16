@@ -4,7 +4,8 @@
     <%- include('../views/partials/head.ejs') %>
   </head>
   <body class="container">
-    <header><%- include('../views/partials/header') %></header>
+    <header><%- include('../views/partials/header') %>
+    </header>
 
     <main>
       <div class="jumbotron">
@@ -12,10 +13,11 @@
     <h1 class="titulos">AGREGAR PRODUCTOS</h1>
     <section>
       <form action="/api/productos" method="post" enctype="multipart/form-data">
-        Titulo : <input type="text" name="titulo" /> precio :
-        <input type="number" name="precio" /> imagen :
-        <input type="url" name="imagen"  />
+        Titulo : <input type="text" name="titulo" /> 
+        precio : <input type="number" name="precio" /> 
+        imagen : <input type="url" name="imagen"  />
         <button type="submit">AGREGAR</button>
+      </form>
     </section>
     <div class=" mt-4 text-center">
       <p>
@@ -27,6 +29,7 @@
     <section>
       <%- include('../views/partials/chat') %>
     </section>
+    <script src="./main.js"></script>
     <footer class="position-relative"><%- include('../views/partials/footer'); %></footer>
   </body>
 </html>

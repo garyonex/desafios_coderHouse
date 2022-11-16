@@ -1,8 +1,10 @@
 
-
+const socket = io()
+socket.on('hello', (arg) => {
+  console.log(arg) // world
+})
 const render = (data) => {
-    notes.innerHTML +=
-        `
+  notes.innerHTML += `
     <div class=" card card-body rounded-0 mb-2 animate__bounceIn">
         <div class="list-group chat">
             <div class="d-flex w-100 justify-content-between">
@@ -17,35 +19,34 @@ const render = (data) => {
 }
 // Agregar mensajes que envian desde el form en plantilla
 
-const addMessage = e => {
-    const message = {
-        user: document.getElementById('user').value,
-        text: document.getElementById('text').value,
-        date: dateNow()
-    }
-    socket.emit('client:chat', message)
-    return false
+const addMessage = (e) => {
+  const message = {
+    user: document.getElementById('user').value,
+    text: document.getElementById('text').value,
+    date: dateNow(),
+  }
+  socket.emit('client:chat', message)
+  return false
 }
 
 // fecha y hora del mensaje
 
 dateNow = () => {
-    const now = new Date()
-    return `${now.getHours()}: ${now.getMinutes()}`
-
+  const now = new Date()
+  return `${now.getHours()}: ${now.getMinutes()}`
 }
 
 const cargar = (nota) => {
-    nota.forEach((nota) => render.nota)
+  nota.forEach((nota) => render.nota)
 }
 
 // card productos
 
 const displayProductos = (productList) => {
-    let productosHTML = ''
+  let productosHTML = ''
 
-    productList.forEach((element) => {
-        productosHTML += `<div class="col text-center mt-4 text-capitalize" >
+  productList.forEach((element) => {
+    productosHTML += `<div class="col text-center mt-4 text-capitalize" >
            
         <div class="card h-100 card_img shadow_sm">
             <img src="${element.thumbnail}" class="card-img-top" alt="${element.title}">
@@ -56,8 +57,8 @@ const displayProductos = (productList) => {
                 <button class="btn btn-primary mt-2 " onclick="add(${element.id}, ${element.price})">Comprar</button>
             </div>
         </div>
-        </div>`;
-    })
+        </div>`
+  })
 }
 
 document.getElementById('insert_product').innerHTML = productosHTML
