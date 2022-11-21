@@ -1,4 +1,4 @@
-import Contenedor from '../Contenedor.js'
+import Contenedor from "../container/Contenedor"
 let productos = null
 const container = new Contenedor()
 const file = './products.json'

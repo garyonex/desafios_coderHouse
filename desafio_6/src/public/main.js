@@ -1,8 +1,18 @@
-
 const socket = io()
-socket.on('hello', (arg) => {
-  console.log(arg) // world
+const notes = document.getElementById('notes')
+socket.on('server:productos', (productos) => {
+  const productosListen = productos
+  console.log(productosListen)
+  displayProductos(productosListen)
 })
+
+socket.on('server:chat', (data) => {
+  render(data)
+})
+socket.on('server:mensajes', (mensajes) => {
+  cargar(mensajes)
+})
+
 const render = (data) => {
   notes.innerHTML += `
     <div class=" card card-body rounded-0 mb-2 animate__bounceIn">
@@ -47,18 +57,15 @@ const displayProductos = (productList) => {
 
   productList.forEach((element) => {
     productosHTML += `<div class="col text-center mt-4 text-capitalize" >
-           
-        <div class="card h-100 card_img shadow_sm">
-            <img src="${element.thumbnail}" class="card-img-top" alt="${element.title}">
-            <div class="card-body">
-                <h5 class="card-title">${element.title}</h5>
-                <span class="card-text">Price  ${element.price}</span>
-                    <span class="float-start">Stock ${element.stock}</span>
-                <button class="btn btn-primary mt-2 " onclick="add(${element.id}, ${element.price})">Comprar</button>
+            <div class="card h-100 card_img shadow_sm">
+                <img src="${element.imagen} " class="card-img-top" alt="${element.titulo}">
+                <div class="card-body">
+                <h5 class="card-title">${element.titulo}</h5>
+                <span class="card-text">precio  ${element.precio}</span>
+                <button class="btn btn-primary mt-2 " onclick="add(${element.id}, ${element.precio})">Comprar</button>
+                </div>
             </div>
-        </div>
         </div>`
   })
+  document.getElementById('insert_product').innerHTML = productosHTML
 }
-
-document.getElementById('insert_product').innerHTML = productosHTML
