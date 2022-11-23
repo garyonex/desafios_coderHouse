@@ -28,7 +28,7 @@ export const addMessage = e => {
 // fecha y hora del mensaje
 
 dateNow = () => {
-    const now = new.Date()
+    const now = new Date()
     return `${now.getHours()}: ${now.getMinutes()}`
 
 }

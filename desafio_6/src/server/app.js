@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname, '../public')))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true}))
 app.set('views', '../views')
-app.set('view engine', 'ejs')
+app.set('view engine', 'hbs')
 // ** multer
 const storage = multer.diskStorage({
   destination: './src/public/files',
@@ -36,7 +36,6 @@ app.engine(
         extname: '.hbs',
     })
 );
-app.set('view engine', 'hbs');
 app.get('/',(req,res) => {
   res.render('./layouts/main')
 })

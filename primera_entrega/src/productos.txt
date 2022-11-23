@@ -1,0 +1,23 @@
+[
+  {
+    "id": 2,
+    "tittle": "papa",
+    "price": "2",
+    "stock": "2262",
+    "thumbnail": "papa.jpg"
+  },
+  {
+    "id": 3,
+    "tittle": "remolacha",
+    "price": "2",
+    "stock": "2262",
+    "thumbnail": "papa.jpg"
+  },
+  {
+    "id": 4,
+    "tittle": "aguacate",
+    "price": "2",
+    "stock": "2262",
+    "thumbnail": "papa.jpg"
+  }
+]
