@@ -24,7 +24,7 @@ class Contenedor {
   escribirArchivo(arrayProductos, file) {
     let json = JSON.stringify(arrayProductos)
     try {
-      fs.writeFileSync(file, json)
+      fs.writeFile(file, json)
     } catch (error) {
       console.log('Error al escribir el archivo', error)
     }
@@ -66,8 +66,10 @@ class Contenedor {
     this.escribirArchivo(todosProductosArray, file)
   }
   //eliminar uno
-  deleteById(id) {
-    const contenidoNuevo = this.contenido.filter((element) => element.id === id)
+  deleteById(id, file) {
+    const productos = this.read(file)
+    const contenidoNuevo = productos.filter((element) => element.id !== id)
+    console.log(contenidoNuevo)
     this.escribirArchivo(contenidoNuevo)
   }
   //Eliminar todo

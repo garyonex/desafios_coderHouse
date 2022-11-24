@@ -3,7 +3,7 @@ import { init, productosTotal } from '../controllers/productosControllers'
 const productos = productosTotal()
 export default (io) => {
  
-  console.log(productos)
+  console.log(typeof(productos))
   const mensajes = []
   io.on('connection', (socket) => {
     console.log(`Nueva conexion cliente ${socket.id}`)

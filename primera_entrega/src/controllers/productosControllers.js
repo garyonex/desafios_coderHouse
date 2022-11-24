@@ -1,18 +1,22 @@
 import Contenedor from '../container/Contenedor'
 
-const contenedorProductos = new Contenedor('productos.txt')
+const contenedorProductos = new Contenedor('productos.json')
+export const todosProductos = async (req, res) => {
+  const result = await contenedorProductos.getAll()
+  res.json({ message: result })
+}
 
 export const saveProductos = async (req, res) => {
   const { body } = req
   const result = await contenedorProductos.save(body)
-  res.json(result)
+  res.json({ message: result })
 }
 
 export const buscarId = async (req, res) => {
-  const id  = req.params.id
+  const id = req.params.id
   const numeroId = Number(id)
   const result = await contenedorProductos.getById(numeroId)
-  res.json({message: result})
+  res.json({ message: result })
 }
 
 export const eliminarId = async (req, res) => {

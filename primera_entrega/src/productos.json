@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "aguacate",
+    "price": "2",
+    "stock": "2262",
+    "thumbnail": "papa.jpg"
+  },
+  {
+    "id": 2,
+    "title": "peras",
+    "price": "255",
+    "stock": "22",
+    "thumbnail": "peras.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Tomate",
+    "price": "25555",
+    "stock": "22",
+    "thumbnail": "tomate.jpg"
+  }
+]

@@ -2,10 +2,10 @@ const socket = io()
 const notes = document.getElementById('notes')
 socket.on('server:productos', (productos) => {
   const productosListen = productos
-  console.log(productosListen)
+  console.log(typeof(productosListen))
   displayProductos(productosListen)
 })
-
+ 
 socket.on('server:chat', (data) => {
   render(data)
 })
