@@ -1,0 +1,61 @@
+<div class="jumbotron center">
+    <h1>Carga productos</h1>
+    <form action="/api/products" method="post" enctype="multipart/form-data" id="prod-new" class="rounded-0">
+            <div class="form-group mb-3">
+                <label class="form-group-text" id="basic-addon1">Title</la>
+                <input
+                    type="text"
+                    class="form-control rounded-0"
+                    placeholder="Title"
+                    aria-label="Username"
+                    aria-describedby="basic-addon1"
+                    name="titulo"
+                    id="title"
+                    required
+                    autofocus
+                />
+
+                <label class="form-group-text">$</label>
+                <input
+                    type="text"
+                    class="form-control rounded-0"
+                    aria-label="Dollar amount (with dot and two decimal places)"
+                    placeholder="Price"
+                    name="precio"
+                    id="price"
+                    required
+                />
+                 {{!-- <label class="form-group-text">Stock</label>
+                <input
+                    type="text"
+                    class="form-control rounded-0"
+                    aria-label="Stock"
+                    placeholder="Stock"
+                    name="stock"
+                    id="stock"
+                    required
+                /> --}}
+                <label class="form-group-text" id="basic-addon1">Photo</la>
+                    <input
+                        type="url"
+                        class="form-control rounded-0 my-auto"
+                        placeholder="Cargar imagen"
+                        name="imagen"
+                        id="url"
+                        required
+                    />
+            </div>
+            <input type="submit" value="Cargar" class="rounded-0 btn btn-danger">
+             <div class=" mt-4 text-center">
+        <p>
+            Si quieres agregar una imagen, da click <a target="_blank" href="https://www.iconfinder.com/search/icons?q=vegetable">AQUI</a>
+            y copia la direcciones de imagen y pegala
+        </p>
+      
+    </div>
+        </form>
+</div>
+<div>
+    <p>Ir a la lista de productos cargados en sistema</p>
+    <a href="/api/products" class="btn btn-primary">Lista</a>
+</div>

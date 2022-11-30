@@ -1,0 +1,32 @@
+[
+  {
+    "titulo": "calabaza",
+    "precio": "858548",
+    "imagen": "https://cdn0.iconfinder.com/data/icons/vegetables-ii-color/290/15-64.png",
+    "id": 1
+  },
+  {
+    "titulo": "tomate",
+    "precio": "4555",
+    "imagen": "https://cdn1.iconfinder.com/data/icons/freak-emoji-1/128/_tomato_vegetable_danger_freak_emoji_-64.png",
+    "id": 2
+  },
+  {
+    "titulo": "jojoto",
+    "precio": "5555",
+    "imagen": "https://cdn2.iconfinder.com/data/icons/fruit-and-vegetable-64/340/corn_food_agriculture_maize_vegetable_grain-64.png",
+    "id": 3
+  },
+  {
+    "titulo": "brocoli",
+    "precio": "6565656",
+    "imagen": "https://cdn2.iconfinder.com/data/icons/fruit-and-vegetable-64/340/vegetable_healthy_broccoli_organic_food_diet_ingredient-64.png",
+    "id": 4
+  },
+  {
+    "titulo": "chaucha",
+    "precio": "2555",
+    "imagen": "https://cdn2.iconfinder.com/data/icons/fruit-and-vegetable-64/340/soybean_agriculture_soy_organic_bean_vegetable_soybeans-64.png",
+    "id": 5
+  }
+]
