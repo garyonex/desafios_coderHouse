@@ -1,9 +1,10 @@
-import Contenedor from '../container/Contenedor'
-import { init, productosTotal } from '../controllers/productosControllers'
-const productos = productosTotal()
+import KnexContenedor from '../container/KnexContenedor'
+import { options } from '../database/configDB'
+const productosApi = async () => {
+  new KnexContenedor(options.mariaDB, 'productos')
+}
+const productos = await productosApi.findAll()
 export default (io) => {
- 
-  console.log(typeof(productos))
   const mensajes = []
   io.on('connection', (socket) => {
     console.log(`Nueva conexion cliente ${socket.id}`)

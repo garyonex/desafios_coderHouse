@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/server/index.js --exec babel-node"
+    "dev": "nodemon src/server/index.js --exec babel-node",
+    "create-table": "babel-node src/scripts/createTable.js"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +17,8 @@
     "knex": "^2.3.0",
     "multer": "1.4.5-lts.1",
     "mysql": "^2.18.1",
-    "socket.io": "4.5.3"
+    "socket.io": "4.5.3",
+    "sqlite3": "^5.1.2"
   },
   "devDependencies": {
     "@babel/cli": "7.19.3",

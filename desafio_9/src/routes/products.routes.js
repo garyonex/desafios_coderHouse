@@ -1,32 +1,40 @@
 import { Router } from 'express'
 import Contenedor from '../container/Contenedor'
-import {
-  init,
-  leer,
-  newProducto,
-  productosTotal,
-} from '../controllers/productosControllers'
-const container = new Contenedor()
-const file = './products.json'
+// import {
+//   init,
+//   leer,
+//   newProducto,
+//   productosTotal,
+// } from '../controllers/productosControllers'
+// const container = new Contenedor()
+// const file = './products.json'
+// const todos = './products.json'
+import KnexContenedor from '../container/KnexContenedor'
+import { options } from '../database/configDB'
+const productosApi = new KnexContenedor(options.mariaDB, 'productos')
 const productRoutes = Router()
-const todos = './products.json'
-productRoutes.get('/', (req, res) => {
-  const productos = productosTotal()
-  console.log(todos)
-  console.log(productos)
-  res.status(200).render('./productsCard', { product: productos })
+productRoutes.get('/', async (req, res) => {
+  // const productos = productosTotal()
+
+  res.render('./listProduct', { product: await productosApi.findAll() })
 })
-productRoutes.post('/', (req, res) => {
+productRoutes.post('/', async (req, res) => {
   const { body } = req
-  newProducto(body, todos)
-  console.log(body)
-  const result = leer(todos)
+  await productosApi.create(body)
   res.render('./addProducts')
+})
+productRoutes.get('/:id', async (req, res) => {
+  const { id } = req.params
+  const result = await productosApi.findById(id)
+  res.json(result)
 })
 productRoutes.delete('/:id', async (req, res) => {
   const { id } = req.params
-  const numId = Number(id)
-  const result = await container.deleteById(numId, file)
+  const result = await productosApi.deleteById(id)
+  res.json({ message: result })
+})
+productRoutes.delete('/', async (req, res) => {
+  const result = await productosApi.deleteAll()
   res.json({ message: result })
 })
 export default productRoutes

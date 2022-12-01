@@ -8,7 +8,7 @@ import addProductsRoutes from '../routes/addProducts.routes'
 const app = express()
 app.use(express.static(path.join(__dirname, '../public')))
 app.use(express.json())
-app.use(express.urlencoded({ extended: true}))
+app.use(express.urlencoded({ extended: true }))
 app.set('views', '../views')
 app.set('view engine', 'hbs')
 // ** multer
@@ -26,17 +26,17 @@ app.use(
 )
 //Seteo - motor de plantilla
 
-app.set('views', path.join(__dirname, '../views'));
+app.set('views', path.join(__dirname, '../views'))
 app.engine(
-    '.hbs',
-    engine({
-        defaultLayout: 'main',
-        layoutsDir: path.join(app.get('views'), 'layouts'),
-        partialsDir: path.join(app.get('views'), 'partials'),
-        extname: '.hbs',
-    })
-);
-app.get('/',(req,res) => {
+  '.hbs',
+  engine({
+    defaultLayout: 'main',
+    layoutsDir: path.join(app.get('views'), 'layouts'),
+    partialsDir: path.join(app.get('views'), 'partials'),
+    extname: '.hbs',
+  })
+)
+app.get('/', (req, res) => {
   res.render('./layouts/main')
 })
 //routes

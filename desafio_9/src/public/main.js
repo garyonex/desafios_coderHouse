@@ -2,7 +2,6 @@ const socket = io()
 const notes = document.getElementById('notes')
 socket.on('server:productos', (productos) => {
   const productosListen = productos
-  console.log(typeof(productosListen))
   displayProductos(productosListen)
 })
  
@@ -58,11 +57,11 @@ const displayProductos = (productList) => {
   productList.forEach((element) => {
     productosHTML += `<div class="col text-center mt-4 text-capitalize" >
             <div class="card h-100 card_img shadow_sm">
-                <img src="${element.imagen} " class="card-img-top" alt="${element.titulo}">
+                <img src="${element.thumbnail} " class="card-img-top" alt="${element.title}">
                 <div class="card-body">
-                <h5 class="card-title">${element.titulo}</h5>
-                <span class="card-text">precio  ${element.precio}</span>
-                <button class="btn btn-primary mt-2 " onclick="add(${element.id}, ${element.precio})">Comprar</button>
+                <h5 class="card-title">${element.title}</h5>
+                <span class="card-text">precio  ${element.price}</span>
+                <button class="btn btn-primary mt-2 " onclick="add(${element.id}, ${element.price})">Comprar</button>
                 </div>
             </div>
         </div>`
