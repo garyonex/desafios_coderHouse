@@ -28,6 +28,8 @@ class Contenedor {
         const newProduct = {
           id: 1,
           ...product,
+          timestamp: Date.now(),
+          
         }
         await fs.promises.writeFile(
           this.filename,
