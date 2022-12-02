@@ -1,25 +1,25 @@
 const socket = io()
+console.log('hola cliente')
 const notes = document.getElementById('notes')
 socket.on('server:productos', (productos) => {
   const productosListen = productos
   displayProductos(productosListen)
 })
- 
-socket.on('server:chat', (data) => {
+
+socket.on('server:chat', async (data) => {
   render(data)
 })
-socket.on('server:mensajes', (mensajes) => {
+socket.on('server:message', async (mensajes) => {
   cargar(mensajes)
 })
 
-const render = (data) => {
+const render = (...data) => {
   notes.innerHTML += `
     <div class=" card card-body rounded-0 mb-2 animate__bounceIn">
         <div class="list-group chat">
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1 usuario">${data.user}</h5>
                 <small> Enviado el: ${data.date}</small>
-                <button class="btn btn-danger" data-id="${data.id}">Eliminar</button>
             </div>
             <p class="mb-1">${data.text}</p>
         </div>

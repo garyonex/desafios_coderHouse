@@ -23,16 +23,16 @@ const createTables = async () => {
 
     // ? tabla chat
     let chatTable = await databaseSql.schema.hasTable('chat')
-    if(chatTable) {
+    if (chatTable) {
       await databaseSql.schema.dropTable('chat')
     }
-    await databaseSql.createTable('chat', table => {
+    await databaseSql.schema.createTable('chat', (table) => {
       table.increments('id')
-      table.string('user',30)
+      table.string('user', 30)
       table.string('date', 20)
-      table.string('text',999)
+      table.string('text', 999)
     })
-    console.log(`Table chat created`);
+    console.log(`Table chat created`)
   } catch (error) {
     console.log(error)
   }

@@ -1,7 +1,7 @@
 <div class='jumbotron mt-4'>
     <h1 class='display-4'> Inicio</h1>
 </div>
-<hr class='my-4' />
+<hr class='my-4' id="containerChat"/>
 <div class='container h-100'>
     <div class='row h-100'>
         <div class='col-md-4 my-auto'>
@@ -18,13 +18,13 @@
                     class='form-control rounded-0 mb-3'
                 />
                 <textarea
-                    name='texto'
-                    id='texto'
+                    name='text'
+                    id='text'
                     rows='2'
                     class='form-control rounded-0 mb-3'
                     placeholder='Tu mensaje'
                 ></textarea>
-                <button class='btn btn-dark rounded-0'>Enviar</button>
+                <button class='btn btn-dark rounded-0' id="sendMsg">Enviar</button>
             </form>
         </div>
         <div class='col-md-8'>

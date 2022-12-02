@@ -37,7 +37,7 @@ app.engine(
   })
 )
 app.get('/', (req, res) => {
-  res.render('./layouts/main')
+  res.render('index')
 })
 //routes
 app.use('/api/products', productRoutes)
