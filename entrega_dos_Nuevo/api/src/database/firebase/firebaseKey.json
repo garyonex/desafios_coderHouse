@@ -1,0 +1,13 @@
+{
+    "type": "service_account",
+    "project_id": "sanitarioscoder",
+    "private_key_id": "c8b8922412cb6bcb98693310d145f9269ec77a99",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDT6CJ4Yw4+kH+N\nOm4z8iDlFRMdkrPzZCux6u3U/pHp/Jkm3FU/WXudrnM9xgyb9Psnyt4UtCU/IMSz\n0H9YHpvPanz5k4+QwNacbu0IzRhQwXPLeEeVOQyc8xzTSEHLqL7qed/3cg5tipM6\nSacogiAXpbUoRMFqLxplhoEIbV/4EQoz4nNu8SxVHV0HT20Pf5XjCyRcPJSP9FH6\nc+5bDoxdsVJ2vO/7CVq2OF6Ha9w1WhLjz2TRanMNKfu0u0AXUR7Bj/FZfTQCbCbA\nMVyvAkjEogafOq35NG2o3X+RXyvsyufJYJvusluccZhaWsvPghzzOEA8Y+LsSpJr\n63AuLB4FAgMBAAECggEABny9JBRcPkbBhjr7XrRolLrKxVqquaZ1E/2jiaQVfCVT\nMaEIgbz6j37ktkfBi7tkk6OenYxPoO7JjCZeOlNi5RGsgR4nBKvH+4KwglbNChky\nCKZGWBImtF4DoZA9EMAPatw6TWKngGuqoDEwYIlt9BYK8BBSyi5mT3oI/zoMoxUh\nfB0bjAdATeevX6s3Z0f/KfAleFjeHPaC2vyK59Gc+h9exWV4hCw/U4lVpHb9wlPo\nNu9Rkp+ipjI91O15r45cmFbpltjgWyQIy8ygRpsReEPykW0jt1WVhuvoj5K/XNZ+\npJqXzjC4FKD5QJtKrl9/xf0xx/pcScWCycif9jRBwQKBgQD9XQHNcI0JKPKgJGBQ\n5GNj6x3I0cqD4IRuTIDa0Q8OIKTuqC68bdARn+DDwRG6wxhZDp0KBccUopyZeTF+\nMTY7KVzpQdVoQ2YLXu0yticG118862Ivbk+ybiC1Dh1sz+lLKOKk6niohWqj5vGD\nETU/DmFKJkSQRFugdH5lnPuolQKBgQDWHK6Wyt4/LmFFU5GHy76yFUb2gcS7LNOm\naZeldnPCUsfMoqyUke60raETuAXjhYYXNe5zjnNboW6270gYRvyhJ7j5UmrzAEK5\nHBkRyMtBgF5I6RcrE645GiUaXm1kfM8iVbu2LtFrS0rEGl1sbY0y8ChE6zCDrbNp\n/ygWPiOTsQKBgGLYRjvADUXlk8Kmbm0grSXuNFCEiF2q2f+uGRdFOHpqge4Z7yHU\nNbiqhyXXzPLv6i/UY6/lUSXbyvyVK5nv2Rh7qqPV60wh/02wWxnNtqwUmjNKIaQf\nhTg3fsskFpa9BmcsLD/quegFJPWMw+w+amePVKV5CIbAJH8U87rw472BAoGBAJSO\nO/h18zPFG0o9jEi67amjp6PbL8Nqe8MHmmb8Q579TpFGARXoFsYXfh4vXS6acwnh\nqntUx+c4n5efd9cYUaoC5I1gSMInWSQUQbScK6JbzY8q4p9JvWTzJfEguSeyjQjW\nkTH7U+Pszog3fsB/ViuUg2wl/nguacBOf+LG5GpRAoGAaOLL8sK9Sl5ke4xjm9ph\noVYqJ0/YeOk1pwZNH32KX8fuy7MqjAlRl/Zo0umBXoT40Sb/BTsVZR2dMPW9405P\n+TAMxDxHJCdP99X8I8OuHnXe7Ejc54g/WUS3fmqkCvOYgu1UzWSS1s/Buev89SZ8\nLjZmXnMLLxnRIcUxrEJYnnc=\n-----END PRIVATE KEY-----\n",
+    "client_email": "firebase-adminsdk-lfni6@sanitarioscoder.iam.gserviceaccount.com",
+    "client_id": "109946059890679310298",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-lfni6%40sanitarioscoder.iam.gserviceaccount.com"
+  }
+  
