@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:8080/api/productos' //? para produccion
+const baseUrl = 'http://localhost:8080/api/products' //? para produccion
 // const baseUrl = '/api/productos' //? para desarrollo
 
 export const createNewProduct = async (newObject) => {
