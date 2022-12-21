@@ -23,4 +23,3 @@ export const editItemToCart = async (id, query, amount) => {
     console.log(result)
   }
 }
-xº

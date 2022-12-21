@@ -1,11 +1,10 @@
 import { useContext } from 'react'
 import CartContext from '../../Context/CartContext'
-import styles from './styles.modules.scss'
 
 const Products = () => {
   const { addItem, products } = useContext(CartContext)
   return (
-    <div className={styles.productsContainer}>
+    <div>
       {products &&
         products.map((product, i) => {
           ;<div key={i}>

@@ -18,7 +18,7 @@ const ItemCart = (item) => {
               SACAR
             </button>
           </div>
-        </div>
+        </div> 
         <div className={styles.rigth}>
           <div>{item.amount}</div>
           <p>Total: ${item.amount * item.price} </p>

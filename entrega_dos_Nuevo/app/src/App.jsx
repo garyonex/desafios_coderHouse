@@ -1,13 +1,11 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import './App.scss'
 import Home from './Components/Home'
+import { CartProvider } from './Context/CartContext'
 function App() {
-
   return (
-    <div className="App">
+    <CartProvider>
       <Home />
-    </div>
+    </CartProvider>
   )
 }
 
