@@ -1,12 +1,16 @@
 import Cart from '../Cart'
+import ChatUser from '../Chat'
 import Products from '../Products'
-import styles from './styles.modules.scss'
+import Register from '../Register'
+import styles from './styles.modules.scss/?inline'
 
 const Home = () => {
     return (
         <div className={styles.home}>
             <Cart /> 
             <Products />
+            <Register />
+            <ChatUser/>
         </div>
     )
 }

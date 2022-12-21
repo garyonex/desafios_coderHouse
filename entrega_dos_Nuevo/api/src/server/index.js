@@ -6,6 +6,10 @@ import '../database/mongoose/database.js'
 const server = http.createServer(app)
 const PORT = 8080
 const httpServer = server.listen(PORT)
-const io = new WebSocket(httpServer)
+const io = new WebSocket(httpServer, {
+  cors: {
+    origin: '*'
+  }
+})
 console.log(`Server on port ${PORT}`)
 socket(io)

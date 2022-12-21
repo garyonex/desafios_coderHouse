@@ -1,6 +1,8 @@
 import { useState } from 'react'
+import { registerUser } from '../../services/users/controllersUser'
 import RegisterForm from '../forms/RegisterForm'
-export const Register = () => {
+
+const Register = () => {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -11,7 +13,7 @@ export const Register = () => {
       const newUserRegister = await registerUser({
         username,
         password,
-        email
+        email,
       })
       setUsername('')
       setEmail('')
@@ -37,9 +39,11 @@ export const Register = () => {
         password={password}
         handleUsernameChange={handleChageUsername}
         handleEmailChange={handleChangeEmail}
-        handlePassword={handleChangePassword}
+        handlePasswordChange={handleChangePassword}
         handleSubmit={handleRegister}
       />
     </>
   )
 }
+
+export default Register

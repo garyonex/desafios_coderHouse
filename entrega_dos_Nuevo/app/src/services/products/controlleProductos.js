@@ -7,7 +7,7 @@ export const createNewProduct = async (newObject) => {
   return request.then((res) => res.data)
 }
 
-export const getAllProduct = async () => {
-  const request = await axios.get(baseUrl)
+export const getAllProduct = () => {
+  const request = axios.get(baseUrl)
   return request.then((res) => res.data)
 }

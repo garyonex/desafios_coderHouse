@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useContext, useState } from 'react'
 import CartContext from '../../Context/CartContext'
-import styles from './styles.modules.scss'
+import styles from './styles.modules.scss?inlaine'
 
 const Cart = () => {
   const [cartOpen, setCartOpen] = useState(false)
@@ -29,12 +29,12 @@ const Cart = () => {
         <div className={styles.buttonCart}>
           {!cartOpen ? (
             <img
-              src='https://cdn0.iconfinder.com/data/icons/google-material-design-3-0/48/ic_shopping_cart_48px-64.png'
+              src='https://cdn1.iconfinder.com/data/icons/shopping-e-commerce-10/33/cart_2-2-64.png'
               alt=''
             />
           ) : (
             <img
-              src='https://cdn1.iconfinder.com/data/icons/shopping-e-commerce-10/33/cart_2-2-64.png'
+              src='https://cdn0.iconfinder.com/data/icons/google-material-design-3-0/48/ic_shopping_cart_48px-64.png'
               alt=''
             />
           )}

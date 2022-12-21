@@ -1,3 +1,4 @@
+import User from '../models/User'
 
 const authUserAdmin = async (req, res, next) => {
   const { userId } = req

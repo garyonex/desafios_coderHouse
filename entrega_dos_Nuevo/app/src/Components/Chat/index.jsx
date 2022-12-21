@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { socket } from '../../services/chat/controllersChat'
 
-function Message() {
+function ChatUser() {
   const [message, setMessage] = useState('')
-  const [messages, setMessages] = useState('')
+  const [messages, setMessages] = useState([])
   const dateNow = () => {
     const now = new Date()
     return `${now.getHours()}: ${now.getMinutes()}`
@@ -16,7 +16,7 @@ function Message() {
     const newMessage = {
       body: message,
       from: 'me',
-      date: dateNow()
+      date: dateNow(),
     }
     setMessages([...messages, newMessage])
     setMessage('')
@@ -27,7 +27,7 @@ function Message() {
   }
   useEffect(() => {
     const receiveMessage = (message) => {
-      setMessages([...messages, message])
+      setMessages([message, ...messages])
     }
     socket.on('server:chat', receiveMessage)
     return () => {
@@ -38,14 +38,14 @@ function Message() {
   return (
     <div>
       <h1>Chat</h1>
-      <form action="" onSubmit={handlesubmit}>
-        <input type="text" onChange={handleChange} value={message} />
+      <form action='' onSubmit={handlesubmit}>
+        <input type='text' onChange={handleChange} value={message} />
         <button>Enviar</button>
       </form>
 
-      {message.map((message, index) => {
-        ;<div key={index}>
-          <div className="animate__bounceIn">
+      {messages.map((message, index) => (
+        <div key={index}>
+          <div className='animate__bounceIn'>
             <div>
               <h5>{message.from}</h5>
               <small>Date: {message.date}</small>
@@ -54,9 +54,9 @@ function Message() {
             <p>{message.body}</p>
           </div>
         </div>
-      })}
+      ))}
     </div>
   )
 }
 
-export default Message
+export default ChatUser
