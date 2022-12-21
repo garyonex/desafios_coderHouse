@@ -1,5 +1,5 @@
 import Products from '../models/Products'
-export const createProduct = async (req, res) => {
+export const createProduct = async (req, res, next) => {
   const { body } = req
   const { name, description, categories, available, img, price } = body
   const newProduct = await Products({
@@ -14,11 +14,11 @@ export const createProduct = async (req, res) => {
     const savedProduct = newProduct.save()
     res.status(201).json(savedProduct)
   } catch (error) {
-    console.log(error)
+    next(error)
   }
 }
 
-export const searchProducts = async (req, res) => {
+export const searchProducts = async (req, res, next) => {
   const { latest, categories, available } = req.query
   try {
     let product
@@ -41,11 +41,11 @@ export const searchProducts = async (req, res) => {
     }
     res.status(200).json(product)
   } catch (error) {
-    console.log(error)
+    next(error)
   }
 }
 
-export const searchById = async (req, res) => {
+export const searchById = async (req, res, next) => {
   const { id } = req.params
   const product = await Products.findById(id)
   try {
@@ -55,21 +55,21 @@ export const searchById = async (req, res) => {
       res.status(400).json('It was not found')
     }
   } catch (error) {
-    console.log(error)
+    next(error)
   }
 }
 
-export const removeById = async (req, res) => {
+export const removeById = async (req, res, next) => {
   const { id } = req.params
   await Products.findByIdAndRemove(id)
   try {
     res.status(204).json('Product has ben deleted')
   } catch (error) {
-    console.log(error)
+    next(error)
   }
 }
 
-export const updateById = async (req, res) => {
+export const updateById = async (req, res, next) => {
   const { id } = req.params
   const product = req.body
   const changeProduct = {
@@ -81,6 +81,6 @@ export const updateById = async (req, res) => {
     })
     res.status(200).json(result)
   } catch (error) {
-    console.log(error)
+    next(error)
   }
 }

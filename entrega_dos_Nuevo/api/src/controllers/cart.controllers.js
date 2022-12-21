@@ -10,7 +10,7 @@ export const getProductsCart = async (req, res) => {
   }
 }
 
-export const addProductCart = async (req, res) => {
+export const addProductCart = async (req, res, next) => {
   const { body } = req
   const { name, img, price } = body
   const inProduct = await Products.findOne({ name })
@@ -35,7 +35,7 @@ export const addProductCart = async (req, res) => {
       const result = newProductInCart.save()
       res.json({ message: 'Producto agregado correctament', result })
     } catch (error) {
-      console.log(error)
+      next(error)
     }
   } else if (inCart) {
     res.status(400).json({
@@ -44,7 +44,7 @@ export const addProductCart = async (req, res) => {
   }
 }
 
-export const updateProductCart = async (req, res) => {
+export const updateProductCart = async (req, res, next) => {
   const { productId } = req.params
   const { query } = req.query
   const { body } = req
@@ -65,7 +65,7 @@ export const updateProductCart = async (req, res) => {
         product
       })
     } catch (error) {
-      console.log(error)
+      next(error)
     }
   } else if (findProduct && query === 'del') {
     body.amount = body.amount - 1
@@ -79,6 +79,7 @@ export const updateProductCart = async (req, res) => {
       })
     } catch (error) {
       console.log(`error al eliminar producto ${error}`)
+      next(error)
     }
   } else {
     res.status(400).json({
@@ -87,7 +88,7 @@ export const updateProductCart = async (req, res) => {
   }
 }
 
-export const deleteProductCart = async (req, res) => {
+export const deleteProductCart = async (req, res, next) => {
   const { productId } = req.params
   const productInCart = await Carts.findById(productId)
 
@@ -106,5 +107,6 @@ export const deleteProductCart = async (req, res) => {
     })
   } catch (error) {
     console.log(`Error al eliminar producto ${error}`)
+    next(error)
   }
 }
