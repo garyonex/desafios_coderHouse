@@ -14,6 +14,7 @@ export default function RegisterForm({ handleSubmit, btn, ...props }) {
               name='username'
               placeholder='Username'
               onChange={props.handleUsernameChange}
+              required
             />
             <img
               src='https://cdn4.iconfinder.com/data/icons/aami-web-internet/64/aami14-40-64.png'
@@ -28,6 +29,7 @@ export default function RegisterForm({ handleSubmit, btn, ...props }) {
               name='email'
               placeholder='Email'
               onChange={props.handleEmailChange}
+              required
             />
             <img
               src='https://cdn3.iconfinder.com/data/icons/aami-web-internet/64/aami4-33-64.png'
@@ -42,6 +44,7 @@ export default function RegisterForm({ handleSubmit, btn, ...props }) {
               name='password'
               placeholder='Password'
               onChange={props.handlePasswordChange}
+              required
             />
             <img
               src='https://cdn3.iconfinder.com/data/icons/aami-web-internet/64/aami8-06-64.png'
