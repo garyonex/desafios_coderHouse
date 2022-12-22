@@ -1,5 +1,5 @@
 import './styles.modules.scss'
-export default function RegisterForm({ handleSubmit, ...props }) {
+export default function RegisterForm({ handleSubmit, message, ...props }) {
   return (
     <div>
       <h1>Bienvenido</h1>
@@ -48,7 +48,8 @@ export default function RegisterForm({ handleSubmit, ...props }) {
               alt='password'
             />
           </div>
-          <button className='btnRegister'>REGISTER</button>
+          <button value={props.btn}
+          className='btnRegister'>{message}</button>
         </div>
       </form>
     </div>

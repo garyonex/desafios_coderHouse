@@ -6,11 +6,18 @@ export const getItemCart = async (newObject) => {
   return request.then((res) => res.data)
 }
 
+// Chequar si se necesitan token para poder agregar producto al carrito
 export const addItemtoCart = async (newProductToCart) => {
+  const config = {
+    headers : {
+      Authorization: token
+    }
+  }
   const request = await axios.post(baseUrl, newProductToCart)
   return request.then((res) => res.data)
 }
 
+// igual aca
 export const editItemToCart = async (id, query, amount) => {
   if (query === 'del' && amount === 1) {
     const request = axios.delete(`${baseUrl} / ${id}`)

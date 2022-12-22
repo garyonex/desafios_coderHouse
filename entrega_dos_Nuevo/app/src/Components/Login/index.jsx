@@ -1,29 +1,30 @@
 import { useState } from 'react'
-import { registerUser } from '../../services/users/controllersUser'
-import RegisterForm from '../forms/RegisterForm'
+import LoginForm from '../forms/LoginForm'
 import './styles.modules.scss'
 
-const Register = () => {
+const Login = () => {
   const [inputs, setInputs] = useState({
-    username: '',
     email: '',
     password: ''
   })
   const [message, setMessage] = useState()
   const [loading, setLoading] = useState(false)
-  const { username, email, password } = inputs
-  const handleRegister = async (event) => {
+  const [user, setUser] = useState(null)
+  const { email, password } = inputs
+  const handleLogin = async (event) => {
     event.preventDefault()
-    if (username !== '' && email !== '' && password !== '') {
+    if (email !== '' && password !== '') {
       try {
-        const newUser = await registerUser({
-          username,
+        const newLogin = await loginUser({
           password,
           email
         })
-        console.log(newUser)
-        setMessage(newUser)
-        setInputs({ username: '', email: '', password: '' })
+        window.localStorage.setItem('loggedAppUser', JSON.stringify(newLogin))
+        console.log(newLogin)
+        setToken(newLogin.token)
+        setMessage(newLogin)
+        setUser(newLogin)
+        setInputs({ email: '', password: '' })
         setTimeout(() => {
           setMessage('')
           //TODO colocar ruta para que redirija a el login
@@ -39,27 +40,31 @@ const Register = () => {
       }
     }
   }
+  // TODO --> donde deberia ir el logout?
+  const handleLogout = () => {
+    setUser(null)
+    setToken(user.token)
+    window.localStorage.removeItem('loggedAppUser')
+  }
   const onChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value })
   }
 
   return (
     <>
-      <div className="formRegister">
-        <RegisterForm
-          username={username}
+      <div>
+        <h1>LOGIN USER</h1>
+        <LoginForm
           email={email}
           password={password}
-          handleUsernameChange={onChange}
           handleEmailChange={onChange}
           handlePasswordChange={onChange}
-          handleSubmit={handleRegister}
-          btn={loading ? 'Cargando ...' : 'Registrarme'}
+          handleSubmit={handleLogin}
         />
+        {message && <div>{message}</div>}
       </div>
-      {message && <div>{message}</div>}
     </>
   )
 }
 
-export default Register
+export default Login

@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const baseUrl = 'http://localhost:8080'
 
-export const login = async (credentias) => {
+export const loginUser = async (credentias) => {
   const { data } = await axios.post(`${baseUrl}/login`, credentias)
   return data
 }

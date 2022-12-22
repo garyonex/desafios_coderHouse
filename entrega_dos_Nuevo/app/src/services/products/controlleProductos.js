@@ -11,3 +11,8 @@ export const getAllProduct = () => {
   const request = axios.get(baseUrl)
   return request.then((res) => res.data)
 }
+
+let token = null
+export const setToken = (newToken) => {
+  token= `Bearer ${newToken}`
+}
