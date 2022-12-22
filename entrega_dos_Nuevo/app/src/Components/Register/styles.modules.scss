@@ -1,3 +1,46 @@
-button {
+.formRegister {
   background-color: rgba(28, 108, 161, 0.612);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  margin: 5px;
+  border-radius: 8px;
+  width: 68%;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin: 5px;
+  }
+  .inputForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #c5e7dc;
+    padding: 10px 15px;
+    border-radius: 8px;
+
+    .left {
+      display: flex;
+      gap: 3px;
+      width: 80%;
+      flex-wrap: wrap;
+      align-content: space-between;
+      justify-content: flex-start;
+
+      input {
+        border: none;
+        font-weight: bold;
+        background-color: transparent;
+        font-size: 14px;
+        color: #2f2f2f;
+        margin: 5px;
+      }
+    }
+    img {
+      width: 25px;
+      height: 20px;
+    }
+  }
 }

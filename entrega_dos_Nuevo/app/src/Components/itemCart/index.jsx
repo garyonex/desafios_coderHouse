@@ -1,16 +1,16 @@
 import React, { useContext } from 'react'
 import CartContext from '../../Context/CartContext'
-import styles from './styles.modules.scss'
+import './styles.modules.scss'
 const ItemCart = (item) => {
   const { editCart } = useContext(CartContext)
   const { amount } = item
   return (
-    <div className={styles.cartItem}>
+    <div className='cartItem'>
       <img src={item.img} alt={item.name} />
-      <div className={styles.dataContainer}>
-        <div className={styles.left}>
+      <div className='dataContainer'>
+        <div className='left'>
           <p>{item.name}</p>
-          <div className={styles.buttons}>
+          <div className='buttons'>
             <button onClick={() => editCart(item._id, 'add', amount)}>
               AGREGAR
             </button>
@@ -18,8 +18,8 @@ const ItemCart = (item) => {
               SACAR
             </button>
           </div>
-        </div> 
-        <div className={styles.rigth}>
+        </div>
+        <div className='rigth'>
           <div>{item.amount}</div>
           <p>Total: ${item.amount * item.price} </p>
         </div>

@@ -1,48 +1,51 @@
 import { useState } from 'react'
 import { registerUser } from '../../services/users/controllersUser'
 import RegisterForm from '../forms/RegisterForm'
+import  './styles.modules.scss'
 
 const Register = () => {
-  const [username, setUsername] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
+  const [inputs, setInputs] = useState({
+    username: '',
+    email: '',
+    password: '',
+  })
+  const [message, setMessage] = useState()
+  const { username, email, password } = inputs
   const handleRegister = async (event) => {
     event.preventDefault()
-    try {
-      const newUserRegister = await registerUser({
-        username,
-        password,
-        email,
-      })
-      setUsername('')
-      setEmail('')
-      setPassword('')
-    } catch (error) {
-      console.log(error)
+    if (username !== '' && email !== '' && password !== '') {
+      try {
+        const newUser = await registerUser({
+          username,
+          password,
+          email,
+        })
+        console.log(newUser)
+        setMessage(newUser)
+        setInputs({ username: '', email: '', password: '' })
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
-  const handleChageUsername = (event) => {
-    setUsername(event.target.value)
+  const onChange = (e) => {
+    setInputs({ ...inputs, [e.target.name]: e.target.value })
   }
-  const handleChangePassword = (event) => {
-    setPassword(event.target.value)
-  }
-  const handleChangeEmail = (event) => {
-    setEmail(event.target.value)
-  }
+
+
   return (
-    <>
+    <div className='formRegister'>
+    
       <RegisterForm
         username={username}
         email={email}
         password={password}
-        handleUsernameChange={handleChageUsername}
-        handleEmailChange={handleChangeEmail}
-        handlePasswordChange={handleChangePassword}
+        handleUsernameChange={onChange}
+        handleEmailChange={onChange}
+        handlePasswordChange={onChange}
         handleSubmit={handleRegister}
       />
-    </>
+    </div>
   )
 }
 

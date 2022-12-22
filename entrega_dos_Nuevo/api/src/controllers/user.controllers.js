@@ -1,4 +1,4 @@
-import bcrypt from 'brypt'
+import bcrypt from 'bcrypt'
 import User from '../models/User'
 
 export const createUsaer = async (req, res, next) => {
@@ -6,7 +6,7 @@ export const createUsaer = async (req, res, next) => {
   const { username, email, password } = body
   try {
     const saltOrRound = 10
-    const passwordHash = await bcrypt.hah(password, saltOrRound)
+    const passwordHash = await bcrypt.hash(password, saltOrRound)
     const user = new User({
       username,
       email,

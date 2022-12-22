@@ -7,7 +7,7 @@ export const login = async (credentias) => {
   return data
 }
 
-export const registerUser = async (data) => {
-  const result = await axios.post(`${baseUrl}/api/register`, data)
-  return result.then((res) => res.data)
+export const registerUser = (newObject) => {
+  const request = axios.post(`${baseUrl}/api/register`, newObject)
+  return request.then((res) => res.data)
 }

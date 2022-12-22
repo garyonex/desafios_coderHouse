@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useContext, useState } from 'react'
 import CartContext from '../../Context/CartContext'
-import styles from './styles.modules.scss?inlaine'
+import './styles.modules.scss'
 
 const Cart = () => {
   const [cartOpen, setCartOpen] = useState(false)
@@ -19,14 +19,14 @@ const Cart = () => {
     0
   )
   return (
-    <div className={styles.cartContainer}>
+    <div className='cartContainer'>
       <div
         onClick={() => {
           setCartOpen(!cartOpen)
         }}
-        className={styles.buttonCartContainer}
+        className='buttonCartContainer'
       >
-        <div className={styles.buttonCart}>
+        <div className='buttonCart'>
           {!cartOpen ? (
             <img
               src='https://cdn1.iconfinder.com/data/icons/shopping-e-commerce-10/33/cart_2-2-64.png'
@@ -39,21 +39,19 @@ const Cart = () => {
             />
           )}
         </div>
-        {!cartOpen && (
-          <div className={styles.productNumber}>{productsLength}</div>
-        )}
+        {!cartOpen && <div className='productNumber'>{productsLength}</div>}
       </div>
       {cartItems && cartOpen && (
-        <div className={styles.cart}>
+        <div className='cart'>
           <h2>Tu carrito</h2>
           {cartItems.length === 0 ? (
-            <p className={styles.cartVacio}>Tu carrito esta vacio</p>
+            <p className='cartVacio'>Tu carrito esta vacio</p>
           ) : (
             <div>
               {cartItems.map((item, i) => (
                 <ItemCart key={i} item={item} />
               ))}
-              <h2 className={styles.cartTotal}>Total : ${totalPriceCart}</h2>
+              <h2 className='cartTotal'>Total : ${totalPriceCart}</h2>
             </div>
           )}
         </div>
