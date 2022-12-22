@@ -8,7 +8,7 @@ export const recoverUserPass = async (req, res) => {
 
   const user = await User.findOne({ username })
   const passCorrect =
-  user === null ? false : await bcrypt.compare(password, username.passwordHash)
+    user === null ? false : await bcrypt.compare(password, user.passwordHash)
 
   if (!(user && passCorrect)) {
     res.status(401).json({
@@ -18,14 +18,15 @@ export const recoverUserPass = async (req, res) => {
 
   const userForToken = {
     id: user._id,
-    username: user.username
+    username: user.username,
+    isAdmin: user.isAdmin
   }
   const token = jwt.sign(userForToken, process.env.JWT_SECRET, {
-    expiredIn: 60 * 60
+    expiresIn: 60 * 60
   })
+  const { ...others } = user._doc
   res.send({
-    username: user.username,
-    email: user.email,
+    ...others,
     token
   })
 }

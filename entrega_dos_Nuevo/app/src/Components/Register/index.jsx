@@ -1,15 +1,16 @@
 import { useState } from 'react'
 import { registerUser } from '../../services/users/controllersUser'
 import RegisterForm from '../forms/RegisterForm'
+import Login from '../Login'
 import './styles.modules.scss'
 
 const Register = () => {
   const [inputs, setInputs] = useState({
     username: '',
     email: '',
-    password: ''
+    password: '',
   })
-  const [message, setMessage] = useState()
+  const [user, setUser] = useState()
   const [loading, setLoading] = useState(false)
   const { username, email, password } = inputs
   const handleRegister = async (event) => {
@@ -19,21 +20,23 @@ const Register = () => {
         const newUser = await registerUser({
           username,
           password,
-          email
+          email,
         })
         console.log(newUser)
-        setMessage(newUser)
+        window.localStorage.setItem('loggedNoteAppUser', JSON.stringify(newUser))
+        setUser(newUser)
         setInputs({ username: '', email: '', password: '' })
         setTimeout(() => {
-          setMessage('')
+          // setUser('')
           //TODO colocar ruta para que redirija a el login
-          setLoading(false)
+          // console.log(`mensaje aqui ${user} ${user.username}`)
+          setLoading(true)
         }, 3000)
       } catch (error) {
         console.log(error)
-        setMessage('Hubo un error')
+        setUser('Hubo un error')
         setTimeout(() => {
-          setMessage('')
+          setUser('')
           setLoading(false)
         }, 1500)
       }
@@ -45,19 +48,22 @@ const Register = () => {
 
   return (
     <>
-      <div className="formRegister">
-        <RegisterForm
-          username={username}
-          email={email}
-          password={password}
-          handleUsernameChange={onChange}
-          handleEmailChange={onChange}
-          handlePasswordChange={onChange}
-          handleSubmit={handleRegister}
-          btn={loading ? 'Cargando ...' : 'Registrarme'}
-        />
-      </div>
-      {message && <div>{message}</div>}
+      {user ? (
+        <Login />
+      ) : (
+        <div className='formRegister'>
+          <RegisterForm
+            username={username}
+            email={email}
+            password={password}
+            handleUsernameChange={onChange}
+            handleEmailChange={onChange}
+            handlePasswordChange={onChange}
+            handleSubmit={handleRegister}
+            btn={loading ? 'Cargando ...' : 'Registrarme'}
+          />
+        </div>
+      )}
     </>
   )
 }

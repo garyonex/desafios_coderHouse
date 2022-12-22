@@ -6,15 +6,15 @@ export default function LoginForm({ handleSubmit, ...props }) {
         <div>
           <input
             type='text'
-            value={props.email}
-            name='email'
-            placeholder='Email'
+            value={props.username}
+            name='username'
+            placeholder='Username'
             onChange={props.handleEmailChange}
           />
         </div>
         <div>
           <input
-            type='text'
+            type='password'
             value={props.password}
             name='password'
             placeholder='Password'

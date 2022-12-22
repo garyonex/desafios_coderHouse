@@ -1,30 +1,31 @@
 import { useState } from 'react'
+import { loginUser, setToken } from '../../services/users/controllersUser'
 import LoginForm from '../forms/LoginForm'
 import './styles.modules.scss'
 
 const Login = () => {
   const [inputs, setInputs] = useState({
-    email: '',
-    password: ''
+    username: '',
+    password: '',
   })
   const [message, setMessage] = useState()
   const [loading, setLoading] = useState(false)
   const [user, setUser] = useState(null)
-  const { email, password } = inputs
+  const { username, password } = inputs
   const handleLogin = async (event) => {
     event.preventDefault()
-    if (email !== '' && password !== '') {
+    if (username !== '' && password !== '') {
       try {
         const newLogin = await loginUser({
-          password,
-          email
+          username,
+          password
         })
         window.localStorage.setItem('loggedAppUser', JSON.stringify(newLogin))
         console.log(newLogin)
         setToken(newLogin.token)
         setMessage(newLogin)
         setUser(newLogin)
-        setInputs({ email: '', password: '' })
+        setInputs({ username: '', password: '' })
         setTimeout(() => {
           setMessage('')
           //TODO colocar ruta para que redirija a el login
@@ -55,13 +56,12 @@ const Login = () => {
       <div>
         <h1>LOGIN USER</h1>
         <LoginForm
-          email={email}
+          username={username}
           password={password}
           handleEmailChange={onChange}
           handlePasswordChange={onChange}
           handleSubmit={handleLogin}
         />
-        {message && <div>{message}</div>}
       </div>
     </>
   )
