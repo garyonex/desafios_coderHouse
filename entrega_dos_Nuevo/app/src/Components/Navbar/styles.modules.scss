@@ -1,67 +1,77 @@
 .navBar_container {
-    height: 60px;
+  height: 60px;
 
-    .subContainer {
-        padding: 10px 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+  .subContainer {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-        .left {
-            flex: 1;
-            display: flex;
-            align-items: center;
+    .left {
+      flex: 1;
+      display: flex;
+      align-items: center;
 
-            .language {
-                font-size: 15px;
-                cursor: pointer;
+      .language {
+        font-size: 15px;
+        cursor: pointer;
+        margin-right: 10px;
 
-                .searchContainer {
-                    border: 0.5px solid gray;
-                    display: flex;
-                    align-items: center;
-                    margin-left: 25px;
-                    padding: 5px;
+        .searchContainer {
+          border: 0.5px solid gray;
+          display: flex;
+          align-items: center;
+          margin-left: 25px;
+          padding: 5px;
 
-                    input {
-                        border: none;
-                    }
-                }
-            }
+          input {
+            border: none;
+          }
+          img {
+            margin-top: 20px;
+          }
         }
-
-        .center {
-            flex: 1;
-            text-align: center;
-
-            .logo {
-                font-weight: bold;
-            }
-        }
-
-        .right {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-
-            .menuItems {
-                font-size: 14px;
-                cursor: pointer;
-                margin-left: 25px;
-            }
-        }
+      }
     }
+
+    .center {
+      flex: 1;
+      text-align: center;
+
+      .logo {
+        font-weight: bold;
+      }
+    }
+
+    .right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      ul {
+        list-style-type: none;
+        li {
+          float: left;
+          margin-right: 5px;
+          padding: 0 4px;
+        }
+      }
+      .menuItems {
+        font-size: 14px;
+        cursor: pointer;
+      }
+    }
+  }
 }
 
-.anuncioContainer{
-    height: 30px;
-    background-color: rgb(114, 164, 185);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    font-weight: 500;
-  
+.anuncioContainer {
+  height: 30px;
+  background-color: rgb(114, 164, 185);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
 }
