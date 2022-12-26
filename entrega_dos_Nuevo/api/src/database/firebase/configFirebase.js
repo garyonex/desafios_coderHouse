@@ -7,4 +7,4 @@ admin.initializeApp({
   databaseURL: 'https://sanitarioscoder.firebase.io'
 })
 
-console.log('Database Connect')
+console.log('Database Connect firebase')
