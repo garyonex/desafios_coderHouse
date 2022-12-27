@@ -24,7 +24,7 @@ export const CartProvider = ({ children }) => {
       })
   }
   //! productos que se encuentra en el carro
-  const getProductCart = () => {
+  const getProductCart = (newObjectToCart) => {
     getItemCart(newObjectToCart).then((productsInCart) => {
       setCartItems(productsInCart)
     })

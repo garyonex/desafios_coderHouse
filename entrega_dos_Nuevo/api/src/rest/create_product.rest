@@ -1,0 +1,12 @@
+POST  http://localhost:8080/api/products
+Content-Type: application/json
+
+{
+  "name": "Samurai eterno",
+  "description": "Ultimo juego del samurai eterno",
+  "price": "100",
+  "available":true,
+  "categories": ["Gaming", "Games", "PlayStation"],
+  "img": "https://cdn3.iconfinder.com/data/icons/vol-6/128/vr-64.png",
+  "shipping": true
+}

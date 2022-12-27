@@ -20,7 +20,7 @@ export const addProductCart = async (req, res, next) => {
   // Esta el producto?
   if (!inProduct) {
     res
-      .stauts(400)
+      .status(400)
       .json({ message: 'Este producto no esta en la base de datos' })
   } else if (notEmply && !inCart) {
     const newProductInCart = new Carts({ name, img, price, amount: 1 })

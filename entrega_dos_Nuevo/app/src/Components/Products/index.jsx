@@ -1,13 +1,13 @@
 import { useContext } from 'react'
 import CartContext from '../../Context/CartContext'
-import './styles.modules.scss?inline'
+import './styles.modules.scss'
 const Products = () => {
   const { addItem, products } = useContext(CartContext)
   return (
     <div className='productsContainer'>
       {products &&
-        products.map((product, i) => {
-          ;<div key={i}>
+        products.map((product, i) => (
+          <div key={i} className='productsList'>
             <img src={product.img} alt={product.name} />
             <div>
               <p>
@@ -20,7 +20,7 @@ const Products = () => {
               <button>En el Carrito</button>
             )}
           </div>
-        })}
+        ))}
     </div>
   )
 }

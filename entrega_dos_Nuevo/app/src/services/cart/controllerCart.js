@@ -1,18 +1,18 @@
 import axios from 'axios'
 const baseUrl = 'http://localhost:8080/api/product-cart'
 
-export const getItemCart = async (newObject) => {
-  const request = await axios.get(baseUrl, newObject)
+export const getItemCart = (newObject) => {
+  const request = axios.get(baseUrl, newObject)
   return request.then((res) => res.data)
 }
 
 // Chequar si se necesitan token para poder agregar producto al carrito
 export const addItemtoCart = async (newProductToCart) => {
-  const config = {
-    headers : {
-      Authorization: token
-    }
-  }
+  // const config = {
+  //   headers : {
+  //     Authorization: token
+  //   }
+  // }
   const request = await axios.post(baseUrl, newProductToCart)
   return request.then((res) => res.data)
 }
