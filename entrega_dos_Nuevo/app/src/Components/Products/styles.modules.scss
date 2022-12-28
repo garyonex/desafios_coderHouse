@@ -1,25 +1,64 @@
-.productsContainer{
-  background-color: rgba(5, 215, 230, 0.185);
+.productsContainer {
   display: flex;
-  align-items: center;
+  flex-flow: row wrap;
   justify-content: space-evenly;
-  flex-direction: row;
-  align-content: center;
-  flex-wrap: wrap;
+  text-align: center;
+  gap: 80px;
   margin: 20px;
 
-  .productsList{
-    background-color: rgba(50, 43, 154, 0.55);
-    display: flex;
-    align-items: stretch;
-    margin: 10px 10px;
-    flex-wrap: nowrap;
-    flex-direction: column;
-    
-    img{
-      width: 30vw;
-      height: 30vh;
-      margin: 20px;
+  .productsList {
+
+
+    .products_card {
+      background-color: rgba(4, 11, 48, 0.412);
+      align-content: center;
+      justify-content: center;
+      border: 1px solid royalblue;
+      height: 560px;
+      width: 320px;
+      border-radius: 10px;
+
+      .card_headers {
+        font-size: 30px;
+        background-color: rgb(25, 113, 190);
+        margin: 8px;
+        padding: 2px;
+        border-radius: 5px;
+
+        img {
+          height: 250px;
+          width: 250px;
+          padding: 2px;
+          margin: 2px;
+          border-radius: 10px;
+        }
+
+        img:hover {
+          opacity: 0.7;
+        }
+      }
+
+      .products_card-description {
+
+        p {
+          margin-top: -3px;
+          color: white;
+          font-size: 20px;
+        }
+      }
+    }
+
+    button {
+      padding: 5px;
+      margin: 2px;
+      font-size: 20px;
+      border-radius: 10px;
+      background-image: linear-gradient(rgba(21, 147, 231, 0.145),
+          rgba(231, 21, 21, 0.289));
+      background-repeat: no-repeat;
+      background-size: 0% 100%;
+      background-position-x: right;
+      transition: background-size 500ms;
     }
   }
 }

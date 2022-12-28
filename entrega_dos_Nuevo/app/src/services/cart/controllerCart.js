@@ -7,13 +7,13 @@ export const getItemCart = (newObject) => {
 }
 
 // Chequar si se necesitan token para poder agregar producto al carrito
-export const addItemtoCart = async (newProductToCart) => {
+export const addItemtoCart = (newProductToCart) => {
   // const config = {
   //   headers : {
   //     Authorization: token
   //   }
   // }
-  const request = await axios.post(baseUrl, newProductToCart)
+  const request = axios.post(baseUrl, newProductToCart)
   return request.then((res) => res.data)
 }
 
