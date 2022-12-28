@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import CartContext from '../../Context/CartContext'
 import './styles.modules.scss'
-const ItemCart = (item) => {
+const ItemCart = ({ item }) => {
   const { editCart } = useContext(CartContext)
   const { amount } = item
   return (
