@@ -17,8 +17,8 @@ const Products = () => {
               <img src={product.img} alt={product.name} />
               <div className='products_card-description'>
                 <p>
-                  {`Precio: $ ${prod.price} \n 
-                    Stock: ${prod.Stock}`}
+                  {`Precio: $ ${product.price} \n 
+                    Stock: ${product.Stock}`}
                 </p>
                 <h3>{product.description}</h3>
               </div>

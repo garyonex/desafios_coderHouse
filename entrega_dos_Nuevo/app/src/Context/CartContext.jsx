@@ -1,9 +1,8 @@
-import { createContext } from 'react'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, createContext } from 'react'
 import {
   addItemtoCart,
   editItemToCart,
-  getItemCart
+  getItemCart,
 } from '../services/cart/controllerCart'
 import { getAllProduct } from '../services/products/controlleProductos'
 const CartContext = createContext()
@@ -17,15 +16,11 @@ export const CartProvider = ({ children }) => {
   // Cada vez que se actualize el carrito seteamos el localStorage
 
   //! todos los productos
-  const getProducts = async () => {
-    try {
-      await getAllProduct() //? todos los productos
-        .then((product) => {
-          setProducts(product)
-        })
-    } catch (error) {
-      console.log(error)
-    }
+  const getProducts = () => {
+    getAllProduct() //? todos los productos
+      .then((product) => {
+        setProducts(product)
+      })
   }
   //! productos que se encuentra en el carro
   const getProductCart = (newObjectToCart) => {
@@ -37,29 +32,27 @@ export const CartProvider = ({ children }) => {
     setTimeout(() => {
       getProducts()
     }, 2000)
-    getProductCart()
+    setProducts()
   }, [])
-  const addItem = (newProductToCart) => {
+  const addItem = async (newProductToCart) => {
     const { name, img, price } = newProductToCart
-    addItemtoCart({name, img, price})
+    try {
+      await addItemtoCart({ name, img, price })
+    } catch (error) {
+      console.log(`aqui el error ${error}`)
+    }
+
     getProducts()
     getProductCart()
-    // TODO chequear esto
-    // addItemtoCart({name, img, price}).then((returnedProduc) => {
-    //   setCartItems(cartItems.concat(returnedProduc))
-    // })
-    
   }
-  console.log(`viene de Context ${addItem}`);
+
   const editCart = (id, query, amount) => {
     editItemToCart(id, query, amount)
     getProductCart()
     getProducts()
   }
   return (
-    <CartContext.Provider
-      value={{ cartItems, products, addItem, editCart, getProducts }}
-    >
+    <CartContext.Provider value={{ cartItems, products, addItem, editCart }}>
       {children}
     </CartContext.Provider>
   )

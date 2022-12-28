@@ -40,9 +40,10 @@ const CartContextProvider = ({ children }) => {
       value={{
         cartList,
         aggToCart,
-        emptyCart,
+        emplyCart,
         inCart,
-        deleteOne
+        deleteOne,
+        allsItems
       }}
     >
       {children}
