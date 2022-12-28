@@ -1,5 +1,5 @@
 import 'style.modules.scss'
-export const Loading = () => {
+const Loading = () => {
   return (
     <center>
       <div className="div-principal">
@@ -10,3 +10,4 @@ export const Loading = () => {
     </center>
   )
 }
+export default Loading

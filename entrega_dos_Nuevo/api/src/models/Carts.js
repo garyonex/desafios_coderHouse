@@ -16,7 +16,18 @@ const CartSchema = Schema({
   price: {
     type: Number,
     required: true
-  }
+  },
+  // asociamos el cart con los usuarios
+  user: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    }
+  ]
+},
+{
+  versionKey: false,
+  timestamps: true
 })
 
 export default model('Cart', CartSchema)

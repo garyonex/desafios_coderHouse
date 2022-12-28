@@ -20,14 +20,14 @@ const UserSchema = new Schema(
     isAdmin: {
       type: Boolean,
       default: false
-    }
-    // // aqui estamos asociando los productos con cada usuario
-    // products: [
-    //   {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Products'
-    //   }
-    // ]
+    },
+    // asociamos el cart con cada usuario
+    cart: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Cart'
+      }
+    ]
   },
   {
     versionKey: false,
