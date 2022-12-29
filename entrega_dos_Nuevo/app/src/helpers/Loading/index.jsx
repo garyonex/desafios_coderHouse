@@ -1,10 +1,10 @@
-import 'style.modules.scss'
+import './styles.modules.scss'
 const Loading = () => {
   return (
     <center>
-      <div className="div-principal">
-        <div className="div-secundario">
-          <div className="spinner div-secundario" />
+      <div className='div-principal'>
+        <div className='div-secundario'>
+          <div className='spinner' />
         </div>
       </div>
     </center>
