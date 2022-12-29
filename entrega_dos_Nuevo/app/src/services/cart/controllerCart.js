@@ -2,8 +2,8 @@ import axios from 'axios'
 import { setToken } from '../products/controlleProductos'
 const baseUrl = 'http://localhost:8080/api/product-cart'
 
-export const getItemCart = (newObject) => {
-  const request = axios.get(baseUrl, newObject)
+export const getItemCart = () => {
+  const request = axios.get(baseUrl)
   return request.then((res) => res.data)
 }
 

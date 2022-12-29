@@ -2,7 +2,7 @@ import { useEffect, useState, createContext } from 'react'
 import {
   addItemtoCart,
   editItemToCart,
-  getItemCart
+  getItemCart,
 } from '../services/cart/controllerCart'
 import { getAllProduct } from '../services/products/controlleProductos'
 const CartContext = createContext()
@@ -18,8 +18,8 @@ export const CartProvider = ({ children }) => {
       })
   }
   //! productos que se encuentra en el carro
-  const getProductCart = (newObjectToCart) => {
-    getItemCart(newObjectToCart).then((productsInCart) => {
+  const getProductCart = async () => {
+    await getItemCart().then((productsInCart) => {
       setCartItems(productsInCart)
     })
   }
@@ -42,7 +42,7 @@ export const CartProvider = ({ children }) => {
   }
 
   const editCart = (id, query, amount) => {
-    editItemToCart(id, query, amount).then(({data}) => console.log(data))
+    editItemToCart(id, query, amount).then(({ data }) => console.log(data))
     getProductCart()
     getProducts()
   }

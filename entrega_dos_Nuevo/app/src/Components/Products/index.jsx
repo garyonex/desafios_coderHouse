@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import CartContext from '../../Context/CartContext'
 import Loading from '../../helpers/Loading'
 import { getAllProduct } from '../../services/products/controlleProductos'
@@ -20,24 +20,21 @@ const Products = () => {
     }, 2000)
   }, [])
   return (
-    <div>
-      <h1>PRODUCTOS</h1>
+    <div className='productsTotals'>
       {loading ? <Loading /> : ''}
-      <div>
-        {products &&
-          products.map((item) => (
-            <div>
-              <Item key={item.id} {...item} />
-              {!item.inCart ? (
-                <div className="card-btn">
-                  <button onClick={() => addItem(product)}> Add to Cart</button>
-                </div>
-              ) : (
-                <button>EN EL CARRITO</button>
-              )}
-            </div>
-          ))}
-      </div>
+      {products &&
+        products.map((item) => (
+          <div key={item._id}>
+            <Item key={item._id} {...item} />
+            {!item.inCart ? (
+              <div className='card-btn'>
+                <button onClick={() => addItem(item)}> Add to Cart</button>
+              </div>
+            ) : (
+              <button>EN EL CARRITO</button>
+            )}
+          </div>
+        ))}
     </div>
   )
 }
