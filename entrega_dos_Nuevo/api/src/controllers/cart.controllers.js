@@ -1,5 +1,6 @@
 import Carts from '../models/Carts'
 import Products from '../models/Products'
+import User from '../models/User'
 
 export const getProductsCart = async (req, res) => {
   const result = await Carts.find()
@@ -16,6 +17,10 @@ export const addProductCart = async (req, res, next) => {
   const inProduct = await Products.findOne({ name })
   const notEmply = name !== '' && img !== '' && price !== ''
   const inCart = await Carts.findOne({ name })
+  //recuperamos el token antes de crear un carrito nuevo
+  const { userId } = req
+  const user = await User.findById(userId)
+  //recuperamos el usuario
 
   // Esta el producto?
   if (!inProduct) {
@@ -23,7 +28,7 @@ export const addProductCart = async (req, res, next) => {
       .status(400)
       .json({ message: 'Este producto no esta en la base de datos' })
   } else if (notEmply && !inCart) {
-    const newProductInCart = new Carts({ name, img, price, amount: 1 })
+    const newProductInCart = new Carts({ name, img, price, amount: 1 , user: userId})
 
     try {
       // actualizamos
@@ -32,8 +37,11 @@ export const addProductCart = async (req, res, next) => {
         { inCart: true, name, img, price },
         { new: true }
       )
-      const result = newProductInCart.save()
-      res.json({ message: 'Producto agregado correctament', result })
+      const savedCart = newProductInCart.save()
+      user.cart = user.cart.concat(savedCart.id)
+      // recuperamos al usuario con sus compras realizadas y le añadimos otra
+      await user.save()
+      res.json({ message: 'Producto agregado correctament', savedCart })
     } catch (error) {
       next(error)
     }

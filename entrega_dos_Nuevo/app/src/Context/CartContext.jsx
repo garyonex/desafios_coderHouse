@@ -2,18 +2,13 @@ import { useEffect, useState, createContext } from 'react'
 import {
   addItemtoCart,
   editItemToCart,
-  getItemCart,
+  getItemCart
 } from '../services/cart/controllerCart'
 import { getAllProduct } from '../services/products/controlleProductos'
 const CartContext = createContext()
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([])
   const [products, setProducts] = useState([])
-
-  // Falta colocar la conexion con el back con axios
-  // para que pueda hacer las peticiones correctamente
-
-  // Cada vez que se actualize el carrito seteamos el localStorage
 
   //! todos los productos
   const getProducts = () => {
@@ -32,7 +27,7 @@ export const CartProvider = ({ children }) => {
     setTimeout(() => {
       getProducts()
     }, 2000)
-    setProducts()
+    getProductCart()
   }, [])
   const addItem = async (newProductToCart) => {
     const { name, img, price } = newProductToCart
@@ -47,7 +42,7 @@ export const CartProvider = ({ children }) => {
   }
 
   const editCart = (id, query, amount) => {
-    editItemToCart(id, query, amount)
+    editItemToCart(id, query, amount).then(({data}) => console.log(data))
     getProductCart()
     getProducts()
   }

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Notification from '../../helpers/Notification/index'
 import { loginUser, setToken } from '../../services/users/controllersUser'
 import LoginForm from '../forms/LoginForm'
 import './styles.modules.scss'
@@ -55,6 +56,7 @@ const Login = () => {
     <>
       <div>
         <h1>LOGIN USER</h1>
+        <Notification message={message}/>
         <LoginForm
           username={username}
           password={password}
