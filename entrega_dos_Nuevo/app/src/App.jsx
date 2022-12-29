@@ -3,9 +3,11 @@ import Home from './Components/Home'
 import { CartProvider } from './Context/CartContext'
 function App() {
   return (
-    <CartProvider>
-      <Home />
-    </CartProvider>
+    <div className='appContainer'>
+      <CartProvider>
+        <Home />
+      </CartProvider>
+    </div>
   )
 }
 
