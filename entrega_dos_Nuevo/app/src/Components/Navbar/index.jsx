@@ -1,6 +1,7 @@
 import './styles.modules.scss'
 import { Link } from 'react-router-dom'
 import { useUser } from '../../hooks/useUser'
+import logo from '../../helpers/image/logo'
 const Navbar = () => {
   const { user } = useUser()
   return (
@@ -18,7 +19,7 @@ const Navbar = () => {
         </div>
         <div className='center'>
           <Link to='/'>
-            <div className='logo'>GaryOnex.</div>
+            <div className='logo'></div>
           </Link>
         </div>
         <div className='right'>
