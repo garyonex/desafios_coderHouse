@@ -9,7 +9,7 @@ export default function LoginForm({ handleSubmit, ...props }) {
             value={props.username}
             name='username'
             placeholder='Username'
-            onChange={props.handleEmailChange}
+            onChange={props.handleUsernameChange}
             required
           />
         </div>

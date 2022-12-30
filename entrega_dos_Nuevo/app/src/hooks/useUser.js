@@ -3,7 +3,7 @@ import { setToken } from '../services/products/controlleProductos'
 import { loginUser } from '../services/users/controllersUser'
 
 export const useUser = () => {
-  const [user, setUser] = userState(null)
+  const [user, setUser] = useState(null)
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedAppUser')
     if (loggedUserJSON) {

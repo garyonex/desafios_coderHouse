@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './styles.modules.scss'
 const Item = ({ ...item }) => {
   const addItem = (amount) => {
@@ -16,7 +16,6 @@ const Item = ({ ...item }) => {
               {`Price: ${item.price} \n
                 Stock: ${item.stock}`}
             </p>
-            <h3>{item.description}</h3>
           </div>
           <div className='card_footer'>
             <Link to={`/products/${item._id}`}>

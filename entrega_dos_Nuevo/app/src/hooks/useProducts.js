@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getAllProduct } from '../services/products/controlleProductos'
+import { getAllProduct, createNewProduct } from '../services/products/controlleProductos'
 
 export const useProducts = () => {
   const [products, setProducts] = useState([])
@@ -11,7 +11,7 @@ export const useProducts = () => {
   }, [])
 
   const addProducts = (productObject) => {
-    createProducts(productObject).then((returnedProduct) => {
+    createNewProduct(productObject).then((returnedProduct) => {
       setProducts(products.concat(returnedProduct))
     })
   }

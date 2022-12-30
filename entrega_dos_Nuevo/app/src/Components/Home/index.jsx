@@ -19,14 +19,16 @@ const Home = () => {
       <Anuncio />
       <Navbar />
       <Routes>
-        <Route path='/'>home</Route>
+        <Route path='/' element={<Products />}>
+          home
+        </Route>
         <Route path='/products/:productId' element={<ItemsDetails />}></Route>
         <Route path='/cart' element={<Cart />}></Route>
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
-        <Route path='/api/products/' element={<Products />}>
+        {/* <Route path='/api/products/' element={<Products />}>
           Products
-        </Route>
+        </Route> */}
         <Route path='/api/chat' element={<ChatUser />} />
       </Routes>
     </div>

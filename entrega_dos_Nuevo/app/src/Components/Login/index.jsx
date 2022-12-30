@@ -17,9 +17,12 @@ const Login = () => {
     event.preventDefault()
     try {
       loginHook({ username, password })
-      setUser('')
+      setUsername('')
       setPassword('')
-      navigate('/products')
+      setTimeout(() => {
+        navigate('/')
+        setLoading(true)
+      }, 5000)
     } catch (error) {
       setErrorMessage('Error login')
       setTimeout(() => {
@@ -33,9 +36,6 @@ const Login = () => {
       return <h1>User is logged</h1>
     }
   }
-  const onChange = (e) => {
-    setInputs({ ...inputs, [e.target.name]: e.target.value })
-  }
 
   return (
     <div>
@@ -44,10 +44,11 @@ const Login = () => {
       <LoginForm
         username={username}
         password={password}
-        handleEmailChange={onChange}
-        handlePasswordChange={onChange}
+        handleUsernameChange={({ target }) => setUsername(target.value)}
+        handlePasswordChange={({ target }) => setPassword(target.value)}
         handleSubmit={handleLogin}
       />
+      {loading ? <small>Cargando ...</small>: ''}
     </div>
   )
 }

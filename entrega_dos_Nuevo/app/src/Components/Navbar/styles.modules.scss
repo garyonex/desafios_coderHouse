@@ -1,6 +1,12 @@
 .navBar_container {
   height: 60px;
-
+  a:link,
+  a:visited,
+  a:hover,
+  a:active {
+    color: #000000;
+    text-decoration: none;
+  }
   .subContainer {
     padding: 10px 20px;
     display: flex;
@@ -74,4 +80,13 @@
   justify-content: center;
   font-size: 14px;
   font-weight: 500;
+  small{
+    margin: 5px;
+    font-weight: bold;
+    color: #ef0e0e;
+    text-transform: uppercase;
+  }
+  h4{
+    margin: 5px;
+  }
 }

@@ -27,9 +27,6 @@ const Register = () => {
         setUser(newUser)
         setInputs({ username: '', email: '', password: '' })
         setTimeout(() => {
-          // setUser('')
-          //TODO colocar ruta para que redirija a el login
-          // console.log(`mensaje aqui ${user} ${user.username}`)
           setLoading(true)
         }, 3000)
       } catch (error) {
