@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
+import { useUser } from '../../hooks/useUser'
 import { socket } from '../../services/chat/controllersChat'
 
 function ChatUser() {
   const [message, setMessage] = useState('')
   const [messages, setMessages] = useState([])
+  const { user } = useUser()
   const dateNow = () => {
     const now = new Date()
     return `${now.getHours()}: ${now.getMinutes()}`
@@ -15,8 +17,8 @@ function ChatUser() {
     socket.emit('client:chat', message)
     const newMessage = {
       body: message,
-      from: 'me',
-      date: dateNow(),
+      from: user.username,
+      date: dateNow()
     }
     setMessages([...messages, newMessage])
     setMessage('')

@@ -1,6 +1,8 @@
 import './styles.modules.scss'
 import { Link } from 'react-router-dom'
+import { useUser } from '../../hooks/useUser'
 const Navbar = () => {
+  const { user } = useUser()
   return (
     <nav className='navBar_container'>
       <div className='subContainer'>
@@ -22,12 +24,17 @@ const Navbar = () => {
         <div className='right'>
           <div className='menuItems'>
             <ul>
-              <Link to='/register'>
-              <li>REGISTER</li>
-              </Link>
-              <Link to='/login'>
-              <li>SIGN IN</li>
-              </Link>
+              {user 
+              ? (<em>Bienvenido {user.username}</em>) 
+              : (
+                (<Link to='/register'>
+                  <li>REGISTER</li>
+                </Link>)(
+                  <Link to='/login'>
+                    <li>SIGN IN</li>
+                  </Link>
+                )
+              )}
               <li>
                 <img
                   src='https://cdn1.iconfinder.com/data/icons/logistics-142/64/order-market-shipping-delivery-shoppin-trolley-cart-24.png'
