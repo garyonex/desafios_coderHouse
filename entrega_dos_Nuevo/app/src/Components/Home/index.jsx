@@ -30,7 +30,7 @@ const Home = () => {
         <Route path='/register' element={<Register />} />
         <Route path='/api/chat' element={<ChatUser />} />
       </Routes>
-      // sino hay user logueado no se muestra el chat
+      {/* // sino hay user logueado no se muestra el chat */}
       {user ? <ChatUser /> : ''}
     </div>
   )
