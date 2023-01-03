@@ -1,14 +1,14 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import CartContext from '../../Context/CartContext'
 import Loading from '../../helpers/Loading'
+import { useLoading } from '../../hooks/useLoading'
 import { useProducts } from '../../hooks/useProducts'
-import { getAllProduct } from '../../services/products/controlleProductos'
 import Item from '../Item'
 import './styles.modules.scss'
 const Products = () => {
   const { addItem } = useContext(CartContext)
   const { products } = useProducts()
-  const [loading, setLoading] = useState(false)
+  const { loading } = useLoading()
   return (
     <div className='productsTotals'>
       {loading ? <Loading /> : ''}

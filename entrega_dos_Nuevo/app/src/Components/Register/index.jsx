@@ -22,8 +22,6 @@ const Register = () => {
           password,
           email,
         })
-        console.log(newUser)
-        window.localStorage.setItem('loggedNoteAppUser', JSON.stringify(newUser))
         setUser(newUser)
         setInputs({ username: '', email: '', password: '' })
         setTimeout(() => {
