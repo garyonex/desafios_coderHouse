@@ -23,7 +23,7 @@ export default function LoginForm({ handleSubmit, ...props }) {
             required
           />
         </div>
-        <button>LOGIN</button>
+        <button>{props.btn}</button>
       </form>
     </div>
   )

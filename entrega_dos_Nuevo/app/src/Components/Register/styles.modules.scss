@@ -3,14 +3,15 @@
   display: flex;
   align-content: center;
   justify-content: center;
-  margin: 5px;
+  margin: auto;
+  margin-top: 20%;
   border-radius: 8px;
   width: 68%;
 
   form {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 10px;
     margin: 5px;
   }
   .inputForm {
@@ -18,13 +19,14 @@
     flex-direction: column;
     justify-content: space-between;
     background-color: #c5e7dc;
-    padding: 10px 15px;
+    padding: 1px;
     border-radius: 8px;
+    width: 32rem;
 
     .left {
       display: flex;
       gap: 3px;
-      width: 80%;
+      width: 10%;
       flex-wrap: wrap;
       align-content: space-between;
       justify-content: flex-start;

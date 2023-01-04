@@ -4,6 +4,7 @@ import Notification from '../../helpers/Notification/index'
 import LoginForm from '../forms/LoginForm'
 import { useUser } from '../../hooks/useUser'
 import './styles.modules.scss'
+import { useLoading } from '../../hooks/useLoading'
 
 const Login = () => {
   const navigate = useNavigate()
@@ -11,7 +12,7 @@ const Login = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState()
-  const [loading, setLoading] = useState(false)
+  const { loading } = useLoading()
 
   const handleLogin = async (event) => {
     event.preventDefault()
@@ -21,8 +22,7 @@ const Login = () => {
       setPassword('')
       setTimeout(() => {
         navigate('/')
-        setLoading(true)
-      }, 5000)
+      }, 3000)
     } catch (error) {
       setErrorMessage('Error login')
       setTimeout(() => {
@@ -47,8 +47,8 @@ const Login = () => {
         handleUsernameChange={({ target }) => setUsername(target.value)}
         handlePasswordChange={({ target }) => setPassword(target.value)}
         handleSubmit={handleLogin}
+        btn={loading ? 'Cargando...' : 'LOGIN'}
       />
-      {loading ? <small>Cargando ...</small>: ''}
     </div>
   )
 }

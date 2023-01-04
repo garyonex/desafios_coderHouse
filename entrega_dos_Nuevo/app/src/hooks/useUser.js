@@ -23,17 +23,21 @@ export const useUser = () => {
   const loginHook = async ({ username, password }) => {
     const user = await loginUser({
       username,
-      password
+      password,
     })
     window.localStorage.setItem('loggedAppUser', JSON.stringify(user))
     setUser(user)
     setToken(user.token)
   }
 
-  const registerHook = async ({newObject}) => {
+  const registerHook = async ({ username, password, email }) => {
     const newUser = await registerUser({
-      newObject
+      username,
+      password,
+      email,
     })
+    setUser(newUser)
+    setToken(newUser.token)
   }
-  return { user, logout, loginHook }
+  return { user, logout, loginHook, registerHook }
 }

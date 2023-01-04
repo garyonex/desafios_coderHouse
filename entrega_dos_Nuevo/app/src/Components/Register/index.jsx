@@ -1,8 +1,11 @@
 import { useState } from 'react'
-import { registerUser } from '../../services/users/controllersUser'
+import { useNavigate } from 'react-router-dom'
+import Notification from '../../helpers/Notification'
+import { useLoading } from '../../hooks/useLoading'
+import { useUser } from '../../hooks/useUser'
 import RegisterForm from '../forms/RegisterForm'
-import Login from '../Login'
 import './styles.modules.scss'
+
 
 const Register = () => {
   const [inputs, setInputs] = useState({
@@ -10,29 +13,24 @@ const Register = () => {
     email: '',
     password: '',
   })
-  const [user, setUser] = useState()
-  const [loading, setLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState()
+  const { registerHook } = useUser()
+  const { loading } = useLoading()
   const { username, email, password } = inputs
   const handleRegister = async (event) => {
     event.preventDefault()
     if (username !== '' && email !== '' && password !== '') {
       try {
-        const newUser = await registerUser({
-          username,
-          password,
-          email,
-        })
-        setUser(newUser)
+        registerHook({ username, email, password })
         setInputs({ username: '', email: '', password: '' })
         setTimeout(() => {
-          setLoading(true)
+          navigate('/')
         }, 3000)
       } catch (error) {
         console.log(error)
-        setUser('Hubo un error')
+        setErrorMessage('Error register')
         setTimeout(() => {
-          setUser('')
-          setLoading(false)
+          setErrorMessage(null)
         }, 1500)
       }
     }
@@ -43,22 +41,19 @@ const Register = () => {
 
   return (
     <>
-      {user ? (
-        <Login />
-      ) : (
-        <div className='formRegister'>
-          <RegisterForm
-            username={username}
-            email={email}
-            password={password}
-            handleUsernameChange={onChange}
-            handleEmailChange={onChange}
-            handlePasswordChange={onChange}
-            handleSubmit={handleRegister}
-            btn={loading ? 'Cargando ...' : 'Registrarme'}
-          />
-        </div>
-      )}
+      <div className='formRegister'>
+        <Notification errorMessage={errorMessage} />
+        <RegisterForm
+          username={username}
+          email={email}
+          password={password}
+          handleUsernameChange={onChange}
+          handleEmailChange={onChange}
+          handlePasswordChange={onChange}
+          handleSubmit={handleRegister}
+          btn={loading ? 'Cargando ...' : 'Registrarme'}
+        />
+      </div>
     </>
   )
 }

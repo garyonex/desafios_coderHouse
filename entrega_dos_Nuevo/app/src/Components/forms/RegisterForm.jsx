@@ -1,13 +1,12 @@
 import './styles.modules.scss'
-export default function RegisterForm({ handleSubmit, btn, ...props }) {
+export default function RegisterForm({ handleSubmit, ...props }) {
   return (
-    <div>
-      <h1>Bienvenido</h1>
+    <div className='register_container'>
       <h3>Registro</h3>
       <form onSubmit={handleSubmit}>
         <div className='inputForm'>
           <div className='left'>
-            <label htmlFor="username">Username</label>
+            <label htmlFor='username'>Username</label>
             <input
               type='text'
               value={props.username}
@@ -22,7 +21,7 @@ export default function RegisterForm({ handleSubmit, btn, ...props }) {
             />
           </div>
           <div className='left'>
-          <label htmlFor="email">Email</label>
+            <label htmlFor='email'>Email</label>
             <input
               type='text'
               value={props.email}
@@ -37,7 +36,7 @@ export default function RegisterForm({ handleSubmit, btn, ...props }) {
             />
           </div>
           <div className='left'>
-          <label htmlFor="password">Password</label>
+            <label htmlFor='password'>Password</label>
             <input
               type='password'
               value={props.password}
@@ -51,9 +50,8 @@ export default function RegisterForm({ handleSubmit, btn, ...props }) {
               alt='password'
             />
           </div>
-          <button
-          className='btnRegister'>{btn}</button>
         </div>
+        <button className='btnRegister'>{props.btn}</button>
       </form>
     </div>
   )
