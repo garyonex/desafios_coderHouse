@@ -1,6 +1,8 @@
 import bcrypt from 'bcrypt'
 import User from '../models/User'
+import faker from '@faker-js/faker'
 
+const { image } = faker
 export const createUsaer = async (req, res, next) => {
   const { body } = req
   const { username, email, password } = body
@@ -10,7 +12,8 @@ export const createUsaer = async (req, res, next) => {
     const user = new User({
       username,
       email,
-      passwordHash
+      passwordHash,
+      thumbnail: Image.imageUrl()
     })
     const savedUser = await user.save()
     res.status(201).json(savedUser)
