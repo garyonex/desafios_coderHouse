@@ -19,16 +19,17 @@ app.use(cors())
 app.use(cookieParser())
 
 // Configuracion session / cookie
-app.use(session({
+app.use(
+  session({
     store: MongoStore.create({
-        mongoUrl: configConnectionsMongo.mongoURL
+      mongoUrl: configConnectionsMongo.mongodbUrl
     }),
-    secret: 'claveSecreta123',
+    secret: process.env.COOKIE_SECRET,
     // indicamos almacenamiento externo
     resave: false,
     saveUninitialized: false
-
-}))
+  })
+)
 
 // TODO Routes
 app.use('/api/product-cart', cartRoutes)
