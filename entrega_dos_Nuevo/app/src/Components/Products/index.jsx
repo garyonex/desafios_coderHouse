@@ -11,7 +11,7 @@ const Products = () => {
   const { products } = useProducts()
   const { loading } = useLoading()
   const { user } = useUser()
-  const token = user.token
+  console.log(user)
   return (
     <div className='productsTotals'>
       {loading ? <Loading /> : ''}
@@ -21,7 +21,7 @@ const Products = () => {
             <Item key={item._id} {...item} />
             {!item.inCart ? (
               <div className='card-btn'>
-                <button onClick={() => addItem(item, token)}> Add to Cart</button>
+                <button onClick={() => addItem(item)}> Add to Cart</button>
               </div>
             ) : (
               <button>EN EL CARRITO</button>

@@ -1,12 +1,12 @@
-export const loginUserCoo = (req, res) => {
+export const loginUserCoo = async (req, res) => {
   const { username } = req.body
-  const result = (req.session.user = username)
-  req.status(200).json(result)
+  const result = await (req.session.user = username)
+  res.status(200).json(result)
   console.log(result)
 }
 
-export const logoutCoo = (req, res) => {
-  const user = req.session.username
+export const logoutCoo = async (req, res) => {
+  const user = await req.session.username
   const result = req.session.destroy((err) => {
     if (err) {
       console.log(`${err}, existe un error en logout cookie`)

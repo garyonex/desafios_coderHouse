@@ -3,7 +3,10 @@ import Products from '../models/Products'
 import User from '../models/User'
 
 export const getProductsCart = async (req, res) => {
-  const result = await Carts.find()
+  const result = await Carts.find({}).populate('user', {
+    username: 1,
+    email: 1
+  })
   if (result) {
     res.json({ result })
   } else {
@@ -33,7 +36,7 @@ export const addProductCart = async (req, res, next) => {
       img,
       price,
       amount: 1,
-      user: userId
+      user: user._id
     })
 
     try {
@@ -43,8 +46,8 @@ export const addProductCart = async (req, res, next) => {
         { inCart: true, name, img, price },
         { new: true }
       )
-      const savedCart = newProductInCart.save()
-      user.cart = user.cart.concat(savedCart.id)
+      const savedCart = await newProductInCart.save()
+      user.cart = user.cart.concat(savedCart._id)
       // recuperamos al usuario con sus compras realizadas y le añadimos otra
       await user.save()
       res.json({ message: 'Producto agregado correctament', savedCart })

@@ -7,8 +7,9 @@ import { handleErrors } from '../middleware/handleErrors'
 import loginRoutes from '../routes/loginRegister.routes'
 import userRoutes from '../routes/user.routes'
 import session from 'express-session'
-import cookieParser from 'cookier-parser'
+import cookieParser from 'cookie-parser'
 import MongoStore from 'connect-mongo'
+import passport from 'passport'
 import configConnectionsMongo from '../database/mongoose/configConnectionsMongo'
 
 const app = express()
@@ -23,13 +24,17 @@ app.use(
   session({
     store: MongoStore.create({
       mongoUrl: configConnectionsMongo.mongodbUrl
+      // indicamos almacenamiento externo
     }),
-    secret: process.env.COOKIE_SECRET,
-    // indicamos almacenamiento externo
+    secret: 'secret',
+    cookie: { maxAge: 600000 },
     resave: false,
+    rolling: true,
     saveUninitialized: false
   })
 )
+app.use(passport.initialize())
+app.use(passport.session())
 
 // TODO Routes
 app.use('/api/product-cart', cartRoutes)

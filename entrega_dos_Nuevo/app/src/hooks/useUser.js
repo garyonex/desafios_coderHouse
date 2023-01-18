@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { setToken } from '../services/products/controlleProductos'
-import { registerUser } from '../services/users/controllersUser'
+import { logoutUser, registerUser } from '../services/users/controllersUser'
 import { loginUser } from '../services/users/controllersUser'
 
 export const useUser = () => {
@@ -15,6 +15,7 @@ export const useUser = () => {
   }, [])
 
   const logout = () => {
+    logoutUser(user.username)
     setUser(null)
     setToken(user.token)
     window.localStorage.removeItem('loggedAppUser')

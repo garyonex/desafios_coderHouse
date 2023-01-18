@@ -1,9 +1,9 @@
 import bcrypt from 'bcrypt'
 import User from '../models/User'
-import faker from '@faker-js/faker'
+// import faker from '@faker-js/faker'
 
-const { image } = faker
-export const createUsaer = async (req, res, next) => {
+// const { image } = faker
+export const createUser = async (req, res, next) => {
   const { body } = req
   const { username, email, password } = body
   try {
@@ -12,8 +12,8 @@ export const createUsaer = async (req, res, next) => {
     const user = new User({
       username,
       email,
-      passwordHash,
-      thumbnail: Image.imageUrl()
+      passwordHash
+      // thumbnail: image.avatar()
     })
     const savedUser = await user.save()
     res.status(201).json(savedUser)
@@ -24,6 +24,11 @@ export const createUsaer = async (req, res, next) => {
 }
 
 export const checkUser = async (req, res, next) => {
-  const users = await User.find({})
+  const users = await User.find({}).populate('cart', {
+    name: 1,
+    amount: 1,
+    price: 1
+  })
+  // populate es para mostrar de forma clara los cart que tiene el usuario
   res.status(200).json(users)
 }
