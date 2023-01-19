@@ -10,7 +10,8 @@ export const authToken = (req, res, next) => {
     decodeToken = jwt.verify(token, process.env.JWT_SECRET)
     const { id: userId } = decodeToken
     req.userId = userId
-  } catch {}
+    next()
+  } catch { }
   if (!token || !decodeToken.id) {
     res.status(401).json({ error: 'Token invalid' })
   }

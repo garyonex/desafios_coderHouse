@@ -42,7 +42,7 @@ const Register = () => {
   return (
     <>
       <div className='formRegister'>
-        <Notification errorMessage={errorMessage} />
+        <Notification message={errorMessage} />
         <RegisterForm
           username={username}
           email={email}

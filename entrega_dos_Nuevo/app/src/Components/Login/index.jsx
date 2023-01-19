@@ -40,7 +40,7 @@ const Login = () => {
   return (
     <div>
       <h1>LOGIN USER</h1>
-      <Notification errorMessage={errorMessage} />
+      <Notification message={errorMessage} />
       <LoginForm
         username={username}
         password={password}
