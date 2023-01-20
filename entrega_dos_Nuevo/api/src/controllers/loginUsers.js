@@ -20,7 +20,7 @@ export const recoverUserPass = async (req, res) => {
   const userForToken = {
     id: user._id,
     username: user.username,
-    isAdmin: user.isAdmin
+    // isAdmin: user.isAdmin
   }
   const token = jwt.sign(userForToken, process.env.JWT_SECRET, {
     expiresIn: 60 * 60
