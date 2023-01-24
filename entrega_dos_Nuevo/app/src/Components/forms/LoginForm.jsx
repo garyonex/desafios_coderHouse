@@ -1,29 +1,29 @@
 import styles from './styles.modules.scss?inline'
-export default function LoginForm({ handleSubmit, ...props }) {
+export default function LoginForm({ handleSubmit, buttonLabel, handlePasswordChange, handleUsernameChange, username, password }) {
   return (
-    <div className={styles.loginform}>
+    <div className='loginForm'>
       <form onSubmit={handleSubmit}>
         <div>
           <input
             type='text'
-            value={props.username}
+            value={username}
             name='username'
             placeholder='Username'
-            onChange={props.handleUsernameChange}
+            onChange={handleUsernameChange}
             required
           />
         </div>
         <div>
           <input
             type='password'
-            value={props.password}
+            value={password}
             name='password'
             placeholder='Password'
-            onChange={props.handlePasswordChange}
+            onChange={handlePasswordChange}
             required
           />
         </div>
-        <button>{props.btn}</button>
+        <button>{buttonLabel}</button>
       </form>
     </div>
   )

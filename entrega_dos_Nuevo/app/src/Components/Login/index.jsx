@@ -47,7 +47,7 @@ const Login = () => {
         handleUsernameChange={({ target }) => setUsername(target.value)}
         handlePasswordChange={({ target }) => setPassword(target.value)}
         handleSubmit={handleLogin}
-        btn={loading ? 'Cargando...' : 'LOGIN'}
+        buttonLabel={loading ? 'Cargando...' : 'LOGIN'}
       />
     </div>
   )

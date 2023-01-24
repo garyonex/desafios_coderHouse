@@ -26,9 +26,9 @@ function FormProducts({ addProduct }) {
     setNewName('')
     setNewImg('')
     setNewPrice('')
-    togglabelRef.current.toggleVisibility()
+   
   }
-  console.log(togglabelRef)
+
   return (
     <>
       <div>Create new Product</div>

@@ -1,4 +1,5 @@
 const ProductForm = ({ handleSubmit, ...props }) => {
+  // TODO revisar en que parte esta funcionando esto
   return (
     <div className="container_productForm">
       <h1>CREATE NEW PRODUCT</h1>
