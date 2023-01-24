@@ -4,7 +4,7 @@ import app from './app.js'
 import socket from './socket.js'
 import '../database/mongoose/database.js'
 const server = http.createServer(app)
-const PORT = 8080
+const PORT = process.env.PORT || 8080
 const httpServer = server.listen(PORT)
 const io = new WebSocket(httpServer, {
   cors: {
