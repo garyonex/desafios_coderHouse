@@ -4,7 +4,7 @@ import multer from 'multer'
 import { engine } from 'express-handlebars'
 import productRoutes from '../routes/products.routes'
 import addProductsRoutes from '../routes/addProducts.routes'
-
+// import morgan from 'morgan'
 // ? logica para cluster
 // -------
 const app = express()
@@ -26,6 +26,18 @@ app.use(
     dest: './src/public/files',
   }).single('imagen')
 )
+// loggers + morgan
+app.use(morgan ( () => {
+  const msg =[
+    tokens.method(req, res),
+    tokens.url(req,res),
+    tokens.status(req,res),
+    token.res(req, res, 'content-length'), '-',
+    tokens['response-time'](req, res), 'ms',
+  ].join(' ')
+  loggers.http(msg)
+  return null
+} ))
 //Seteo - motor de plantilla
 
 app.set('views', path.join(__dirname, '../views'))
@@ -45,3 +57,4 @@ app.get('/', (req, res) => {
 app.use('/api/products', productRoutes)
 app.use('/api/addProducts', addProductsRoutes)
 export default app
+
