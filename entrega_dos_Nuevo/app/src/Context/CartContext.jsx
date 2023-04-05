@@ -21,10 +21,10 @@ export const CartProvider = ({ children }) => {
   //! productos que se encuentra en el carro
   const getProductCart = async () => {
     await getItemCart()
-    .then((productsInCart) => {
-      setCartItems(productsInCart)
-    })
-    .catch(err => console.log(err))
+      .then((productsInCart) => {
+        setCartItems(productsInCart)
+      })
+      .catch(err => console.log(err))
   }
   useEffect(() => {
     setTimeout(() => {
@@ -32,27 +32,28 @@ export const CartProvider = ({ children }) => {
     }, 2000)
   }, [])
   const addItem = async (newProductToCart) => {
-    const { name, img, price } = newProductToCart
-    try {
-      await addItemtoCart({ name, img, price })
-    } catch (error) {
-      console.log(`aqui el error ${error}`)
-    }
 
-    getProducts()
-    getProductCart()
+  }
+  try {
+    await addItemtoCart({ ...newProductToCart })
+  } catch (error) {
+    console.log(`aqui el error ${error}`)
   }
 
-  const editCart = (id, query, amount) => {
-    editItemToCart(id, query, amount).then(({ data }) => console.log(data))
-    getProductCart()
-    getProducts()
-  }
-  return (
-    <CartContext.Provider value={{ cartItems, products, addItem, editCart }}>
-      {children}
-    </CartContext.Provider>
-  )
+  getProducts()
+  getProductCart()
+}
+
+const editCart = (id, query, amount) => {
+  editItemToCart(id, query, amount).then(({ data }) => console.log(data))
+  getProductCart()
+  getProducts()
+}
+return (
+  <CartContext.Provider value={{ cartItems, products, addItem, editCart }}>
+    {children}
+  </CartContext.Provider>
+)
 }
 
 export default CartContext
