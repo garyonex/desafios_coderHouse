@@ -11,7 +11,7 @@ export const createProduct = async (req, res, next) => {
     price
   })
   try {
-    const savedProduct = newProduct.save()
+    const savedProduct = await newProduct.save()
     res.status(201).json(savedProduct)
   } catch (error) {
     next(error)
@@ -47,8 +47,8 @@ export const searchProducts = async (req, res, next) => {
 
 export const searchById = async (req, res, next) => {
   const { id } = req.params
-  const product = await Products.findById(id)
   try {
+    const product = await Products.findById(id)
     if (product) {
       res.status(200).json(product)
     } else {
@@ -61,8 +61,8 @@ export const searchById = async (req, res, next) => {
 
 export const removeById = async (req, res, next) => {
   const { id } = req.params
-  await Products.findByIdAndRemove(id)
   try {
+    await Products.findByIdAndRemove(id)
     res.status(204).json('Product has ben deleted')
   } catch (error) {
     next(error)

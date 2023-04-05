@@ -16,18 +16,20 @@ export const CartProvider = ({ children }) => {
       .then((product) => {
         setProducts(product)
       })
+      .catch(err => console.log(err))
   }
   //! productos que se encuentra en el carro
   const getProductCart = async () => {
-    await getItemCart().then((productsInCart) => {
+    await getItemCart()
+    .then((productsInCart) => {
       setCartItems(productsInCart)
     })
+    .catch(err => console.log(err))
   }
   useEffect(() => {
     setTimeout(() => {
       getProducts()
     }, 2000)
-    getProductCart()
   }, [])
   const addItem = async (newProductToCart) => {
     const { name, img, price } = newProductToCart

@@ -1,6 +1,7 @@
 import Carts from '../models/Carts'
 import Products from '../models/Products'
 import User from '../models/User'
+import CartItem from '../models/CartItems'
 
 export const getProductsCart = async (req, res) => {
   const result = await Carts.find({}).populate('user', {
@@ -124,6 +125,45 @@ export const deleteProductCart = async (req, res, next) => {
     })
   } catch (error) {
     console.log(`Error al eliminar producto ${error}`)
+    next(error)
+  }
+}
+
+export const newCartProduct = async (req, res, next) => {
+  const { product, quantity, userId } = req.body
+  try {
+    const cartItem = await new cartItem({
+      product, quantity
+    })
+    Carts.findByIdAndUpdate(
+      { user: userId },
+      { $push: { items: cartItem } },
+      { upsert: true, new: true }
+    )
+      .populate('items.product')
+    res.status(200).json(cartItem)
+  } catch (error) {
+    next(error)
+  }
+}
+
+export const newCartId = async (req, res, next) => {
+  const { id } = req.params
+  try {
+    const cartId = CartItem.findByIdAndUpdate(id, { $set: { quantity: req.body.quantity } },
+      { new: true })
+    res.status(204).json(cartId)
+  } catch (error) {
+    next(error)
+  }
+}
+
+export const newCartDelete = async (req, res, next) => {
+  const id = req.params
+  const result = await CartItem.findByIdAndDelete(id)
+  try {
+    res.status(204).json({ message: 'deleted cart' })
+  } catch (error) {
     next(error)
   }
 }
